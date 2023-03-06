@@ -44,5 +44,10 @@ namespace RagimovApp.WindowFolder.ManagerWindowFolder
         {
             MainFrame.Navigate(new ListEmployeePage());
         }
+
+        private void AddEmployeeButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new AddEmployeePage());
+        }
     }
 }

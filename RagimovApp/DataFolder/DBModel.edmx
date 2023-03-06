@@ -98,6 +98,7 @@
           <Property Name="MiddleNameStaff" Type="nvarchar" MaxLength="70" />
           <Property Name="NumberPhone" Type="nvarchar" MaxLength="70" Nullable="false" />
           <Property Name="IdUser" Type="int" />
+          <Property Name="PhotoStaff" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="StatusOrder">
           <Key>
@@ -480,6 +481,7 @@
           <Property Name="MiddleNameStaff" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
           <Property Name="NumberPhone" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IdUser" Type="Int32" />
+          <Property Name="PhotoStaff" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_Staff_User" FromRole="Staff" ToRole="User" />
         </EntityType>
         <EntityType Name="StatusOrder">
@@ -865,6 +867,7 @@
                 <ScalarProperty Name="MiddleNameStaff" ColumnName="MiddleNameStaff" />
                 <ScalarProperty Name="NumberPhone" ColumnName="NumberPhone" />
                 <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="PhotoStaff" ColumnName="PhotoStaff" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

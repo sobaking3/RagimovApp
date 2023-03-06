@@ -20,6 +20,7 @@ namespace RagimovApp.DataFolder
         public string MiddleNameStaff { get; set; }
         public string NumberPhone { get; set; }
         public Nullable<int> IdUser { get; set; }
+        public byte[] PhotoStaff { get; set; }
     
         public virtual User User { get; set; }
     }

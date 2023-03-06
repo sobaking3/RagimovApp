@@ -150,6 +150,9 @@
     <Compile Include="PageFolder\AdminPageFolder\ListUserPage.xaml.cs">
       <DependentUpon>ListUserPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PageFolder\ManagerPageFolder\AddEmployeePage.xaml.cs">
+      <DependentUpon>AddEmployeePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PageFolder\ManagerPageFolder\ListEmployeePage.xaml.cs">
       <DependentUpon>ListEmployeePage.xaml</DependentUpon>
     </Compile>
@@ -214,6 +217,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PageFolder\ManagerPageFolder\AddEmployeePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PageFolder\ManagerPageFolder\ListEmployeePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -250,7 +257,6 @@
   <ItemGroup>
     <Resource Include="ResourceFolder\Close.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="DataFolder\DBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

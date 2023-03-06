@@ -22,8 +22,9 @@
             <TextBox x:Name="SearchTb"
                      Grid.Column="1" Width="Auto"
                      TextChanged="SearchTb_TextChanged"/>
-            <ListBox Grid.Row="1" Grid.ColumnSpan="2"
-                     x:Name="ListEmployeeLB">
+            <ListBox Grid.Row="1"
+                 Grid.ColumnSpan="2"
+                 x:Name="ListEmployeeLB">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -32,54 +33,62 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
+
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                                 <RowDefinition/>
                                 <RowDefinition/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
+
                             <Image Grid.RowSpan="4"
-                                   Source="{Binding PhotoStaff}"/>
+                               Source="{Binding PhotoStaff}"/>
                             <TextBlock Grid.Column="1">
-                                <Run Text="Фамилия"
-                                     FontWeight="Bold"/>
-                                <Run Text="{Binding LastNameStaff}"/>
+                            <Run Text="Фамилия: "
+                                 FontWeight="Bold"/>
+                            <Run Text="{Binding LastNameStaff}"/>
                             </TextBlock>
 
                             <TextBlock Grid.Row="1"
-                                       Grid.Column="1">
-                                <Run Text="Имя: "
-                                     FontWeight="Bold"/>
-                                <Run Text="{Binding FirstNameStaff}"/>
+                                   Grid.Column="1">
+                            <Run Text="Имя: "
+                                 FontWeight="Bold"/>
+                            <Run Text="{Binding FirstNameStaff}"/>
                             </TextBlock>
 
                             <TextBlock Grid.Row="2"
-                                       Grid.Column="1">
-                                <Run Text="Отчетсво"
-                                     FontWeight="Bold"/>
-                                <Run Text="{Binding MiddleNameStaff}"/>
-
+                                   Grid.Column="1">
+                            <Run Text="Отчество: "
+                                 FontWeight="Bold"/>
+                            <Run Text="{Binding MiddleNameStaff}"/>
                             </TextBlock>
 
-                            <TextBlock Grid.Row="3" Grid.Column="1">
-                                <Run Text="Номер телефона" FontWeight="Bold"/>
-                                <Run Text="{Binding NumberPhone}"/>
+                            <TextBlock Grid.Row="3"
+                                   Grid.Column="1"
+                                   >
+                            <Run Text="Номер телефона: "
+                                 FontWeight="Bold"/>
+                            <Run Text="{Binding NumberPhone}"/>
                             </TextBlock>
 
-                            <TextBlock Grid.Row="4" Grid.Column="1">
-                                <Run Text="Логин" FontWeight="Bold"/>
-                                <Run Text="{Binding User.Login}"/>
+                            <TextBlock Grid.Column="2">
+                            <Run Text="Логин: "
+                                 FontWeight="Bold"/>
+                            <Run Text="{Binding User.LoginUser}"/>
                             </TextBlock>
 
-                            <TextBlock Grid.Row="1" Grid.Column="2">
-                                <Run Text="Пароль" FontWeight="Bold"/>
-                                <Run Text="{Binding User.PasswordUser}"/>
+                            <TextBlock Grid.Column="2"
+                                   Grid.Row="1">
+                            <Run Text="Пароль: "
+                                 FontWeight="Bold"/>
+                            <Run Text="{Binding User.PasswordUser}"/>
                             </TextBlock>
 
-                            <TextBlock Grid.Row="2" Grid.Column="2">
-                                <Run Text="Роль" FontWeight="Bold"/>
-                                <Run Text="{Binding User.Role.NameRole}"/>
-
+                            <TextBlock Grid.Row="2"
+                                   Grid.Column="2">
+                            <Run Text="Роль: "
+                                 FontWeight="Bold"/>
+                            <Run Text="{Binding User.Role.NameRole}"/>
                             </TextBlock>
                         </Grid>
                     </DataTemplate>

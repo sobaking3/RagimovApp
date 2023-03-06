@@ -45,6 +45,10 @@
                                 Content="Спосок сотрудников"
                                 Height="50" Click="ListEmployeeButton_Click"/>
 
+                        <Button x:Name="AddEmployeeButton"
+                                Content="Добавить сотрудника"
+                                Height="50" Click="AddEmployeeButton_Click"/>
+
                     </StackPanel>
                     <Button x:Name="ExitBtn"
                             Grid.Row="1"
@@ -57,7 +61,9 @@
                         <RowDefinition Height="70"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Frame Grid.Row="1" Grid.Column="2"
+                    <Label Style="{DynamicResource LogoLabel}"
+                           Content="{Binding ElementName=MainFrame, Path=Content.Title}"/>
+                    <Frame Grid.Row="1"
                                x:Name="MainFrame"
                                NavigationUIVisibility="Hidden"/>
 

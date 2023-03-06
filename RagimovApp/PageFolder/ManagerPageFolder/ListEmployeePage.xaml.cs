@@ -1,4 +1,5 @@
-﻿using RagimovApp.DataFolder;
+﻿using Ragimov.ClassFolder;
+using RagimovApp.DataFolder;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,26 @@ namespace RagimovApp.PageFolder.ManagerPageFolder
 
         private void SearchTb_TextChanged(object sender, TextChangedEventArgs e)
         {
+            try
+            {
 
+            
+            ListEmployeeLB.ItemsSource = DBEntities.GetContext()
+                .Staff.Where(u => u.LastNameStaff
+                .StartsWith(SearchTb.Text) || u.FirstNameStaff
+                .StartsWith(SearchTb.Text) || u.NumberPhone
+                .StartsWith(SearchTb.Text))
+                .ToList().OrderBy(u => u.LastNameStaff);
+            if(ListEmployeeLB.Items.Count <= 0)
+            {
+                MBClass.MBError("Данные не найдены");
+            }
+            }
+            catch (Exception ex)
+            {
+                MBClass.MBError(ex);
+            }
+            
         }
     }
 }
