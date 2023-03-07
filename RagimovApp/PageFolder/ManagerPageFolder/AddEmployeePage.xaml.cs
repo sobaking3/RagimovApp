@@ -69,7 +69,7 @@ namespace RagimovApp.PageFolder.ManagerPageFolder
                 MiddleNameStaff = MiddleNameTb.Text,
                 NumberPhone = NumberPhoneTb.Text,
                 IdUser = user.IdUser,
-                PhotoStaff = ImageClass.ConvertImageToByteArray(selectedFileName)
+                PhotoStaff = !string.IsNullOrEmpty(selectedFileName) ? ImageClass.ConvertImageToByteArray(selectedFileName): null
             };
             DBEntities.GetContext().Staff.Add(staffAdd);
             DBEntities.GetContext().SaveChanges();
@@ -86,7 +86,7 @@ namespace RagimovApp.PageFolder.ManagerPageFolder
                     "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
                     "Portable Network Graphic (*.png)|*.png";
 
-                if(op.ShowDialog() == true)
+                if (op.ShowDialog() == true)
                 {
                     selectedFileName = op.FileName;
                     staff.PhotoStaff = ImageClass.ConvertImageToByteArray(selectedFileName);
@@ -97,6 +97,11 @@ namespace RagimovApp.PageFolder.ManagerPageFolder
             {
                 MBClass.MBError(ex);
             }
+        }
+
+        private void UploadImageBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AddPhoto();
         }
     }
 }
