@@ -12,18 +12,11 @@ namespace RagimovApp.DataFolder
     using System;
     using System.Collections.Generic;
     
-    public partial class TypeRawMaterial
+    public partial class Street
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TypeRawMaterial()
-        {
-            this.RawMaterial = new HashSet<RawMaterial>();
-        }
+        public int IdStreet { get; set; }
+        public string StreetName { get; set; }
     
-        public int IdTypeRawMaterial { get; set; }
-        public string NameTypeRawMaterial { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RawMaterial> RawMaterial { get; set; }
+        public virtual CinemaAdress CinemaAdress { get; set; }
     }
 }

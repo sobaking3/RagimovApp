@@ -27,7 +27,7 @@ namespace RagimovApp.PageFolder.ManagerPageFolder
     /// </summary>
     public partial class EditEmployeePage : Page
     {
-        Staff staff = new Staff();
+        WorkerInfo WorkerInfo = new WorkerInfo();
         public EditEmployeePage()
         {
             InitializeComponent();
@@ -47,8 +47,8 @@ namespace RagimovApp.PageFolder.ManagerPageFolder
                 if (op.ShowDialog() == true)
                 {
                     selectedFileName = op.FileName;
-                    staff.PhotoStaff = ImageClass.ConvertImageToByteArray(selectedFileName);
-                    ImPhoto.Source = ImageClass.ConvertByteArrayToImage(staff.PhotoStaff);
+                    WorkerInfo.WorkerPhoto = ImageClass.ConvertImageToByteArray(selectedFileName);
+                    ImPhoto.Source = ImageClass.ConvertByteArrayToImage(WorkerInfo.WorkerPhoto);
                 }
             }
             catch (Exception ex)
@@ -66,12 +66,12 @@ namespace RagimovApp.PageFolder.ManagerPageFolder
         {
             try
             {
-                staff = DBEntities.GetContext().Staff.
-                    FirstOrDefault(s => s.IdStaff == staff.IdStaff);
-                staff.LastNameStaff = LastNameTb.Text;
-                staff.FirstNameStaff = FirstNameTb.Text;
-                staff.MiddleNameStaff = MiddleNameTb.Text;
-                staff.NumberPhone = NumberPhoneTb.Text;
+                WorkerInfo = DBEntities.GetContext().WorkerInfo.
+                    FirstOrDefault(s => s.IdInfoAbout == WorkerInfo.IdInfoAbout);
+                WorkerInfo.LastName = LastNameTb.Text;
+                WorkerInfo.FirstName = FirstNameTb.Text;
+                WorkerInfo.MiddleName = MiddleNameTb.Text;
+                WorkerInfo.Number = NumberPhoneTb.Text;
                 DBEntities.GetContext().SaveChanges();
                 MBClass.MBInfo("Данные успешно сохранены");
                 NavigationService.Navigate(new ListEmployeePage());

@@ -74,10 +74,22 @@
     </Compile>
     <Compile Include="ClassFolder\ExportClass.cs" />
     <Compile Include="ClassFolder\ImageClass.cs" />
-    <Compile Include="DataFolder\Client.cs">
+    <Compile Include="DataFolder\Cinema.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataFolder\CinemaAdress.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataFolder\City.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataFolder\CityWorker.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataFolder\ContextClass.cs" />
+    <Compile Include="DataFolder\Country.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataFolder\DBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -93,52 +105,43 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="DataFolder\Details.cs">
+    <Compile Include="DataFolder\Films.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataFolder\DetailsAndMaterial.cs">
+    <Compile Include="DataFolder\Halls.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataFolder\Order.cs">
+    <Compile Include="DataFolder\PlaceStatus.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataFolder\Product.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataFolder\ProductAndDetails.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataFolder\Provider.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataFolder\RawMaterial.cs">
+    <Compile Include="DataFolder\RegionWorker.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataFolder\Role.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataFolder\Staff.cs">
+    <Compile Include="DataFolder\ScheduleOfFilms.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataFolder\StatusOrder.cs">
+    <Compile Include="DataFolder\Street.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataFolder\SupplyMaterial.cs">
+    <Compile Include="DataFolder\StreetWorker.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataFolder\sysdiagrams.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataFolder\TypeClient.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataFolder\TypeRawMaterial.cs">
+    <Compile Include="DataFolder\Tickets.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataFolder\User.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataFolder\Workshop.cs">
+    <Compile Include="DataFolder\WorkerAdress.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataFolder\WorkerInfo.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PageFolder\AdminPageFolder\AddUserPage.xaml.cs">

@@ -12,24 +12,26 @@ namespace RagimovApp.DataFolder
     using System;
     using System.Collections.Generic;
     
-    public partial class RawMaterial
+    public partial class Tickets
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public RawMaterial()
+        public Tickets()
         {
-            this.DetailsAndMaterial = new HashSet<DetailsAndMaterial>();
-            this.SupplyMaterial = new HashSet<SupplyMaterial>();
+            this.ScheduleOfFilms = new HashSet<ScheduleOfFilms>();
         }
     
-        public int IdRawMaterial { get; set; }
-        public string RawName { get; set; }
-        public int IdTypeRawMaterial { get; set; }
-        public string CostRawMaterial { get; set; }
+        public int IdTicket { get; set; }
+        public int IdFilm { get; set; }
+        public System.DateTime StartingDate { get; set; }
+        public int IdHall { get; set; }
+        public decimal Cost { get; set; }
+        public System.DateTime SellingDate { get; set; }
+        public int RowNumber { get; set; }
+        public int PlaceNumber { get; set; }
     
+        public virtual Films Films { get; set; }
+        public virtual Halls Halls { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DetailsAndMaterial> DetailsAndMaterial { get; set; }
-        public virtual TypeRawMaterial TypeRawMaterial { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SupplyMaterial> SupplyMaterial { get; set; }
+        public virtual ICollection<ScheduleOfFilms> ScheduleOfFilms { get; set; }
     }
 }

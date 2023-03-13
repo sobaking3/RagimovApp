@@ -4,36 +4,41 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c349903df124485983c0afb5607668c3" Name="Diagram1">
-        <EntityTypeShape EntityType="DBModel.Client" Width="1.5" PointX="12" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Details" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.DetailsAndMaterial" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Order" Width="1.5" PointX="10" PointY="11.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Product" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.ProductAndDetails" Width="1.5" PointX="7.5" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Provider" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.RawMaterial" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Role" Width="1.5" PointX="7.75" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Staff" Width="1.5" PointX="12.25" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.StatusOrder" Width="1.5" PointX="7.75" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.SupplyMaterial" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="14" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.TypeClient" Width="1.5" PointX="9.75" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.TypeRawMaterial" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.User" Width="1.5" PointX="10" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Workshop" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
-        <AssociationConnector Association="DBModel.FK_Client_TypeClient" ManuallyRouted="false" />
-        <AssociationConnector Association="DBModel.FK_DetailsAndMaterial_Details" ManuallyRouted="false" />
-        <AssociationConnector Association="DBModel.FK_DetailsAndMaterial_RawMaterial" ManuallyRouted="false" />
-        <AssociationConnector Association="DBModel.FK_ProductAndDetails_DetailsAndMaterial" ManuallyRouted="false" />
-        <AssociationConnector Association="DBModel.FK_Order_StatusOrder" ManuallyRouted="false" />
-        <AssociationConnector Association="DBModel.FK_Product_Workshop" ManuallyRouted="false" />
-        <AssociationConnector Association="DBModel.FK_ProductAndDetails_Product" ManuallyRouted="false" />
-        <AssociationConnector Association="DBModel.FK_SupplyMaterial_Provider" ManuallyRouted="false" />
-        <AssociationConnector Association="DBModel.FK_RawMaterial_TypeRawMaterial" ManuallyRouted="false" />
-        <AssociationConnector Association="DBModel.FK_SupplyMaterial_RawMaterial" ManuallyRouted="false" />
-        <AssociationConnector Association="DBModel.FK_User_Role" ManuallyRouted="false" />
-        <AssociationConnector Association="DBModel.FK_Staff_User" ManuallyRouted="false" />
+      <Diagram DiagramId="cb13bce3e2104d4fbf4944da89111955" Name="Diagram1">
+        <EntityTypeShape EntityType="DBModel.Cinema" Width="1.5" PointX="0.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.CinemaAdress" Width="1.5" PointX="1.5" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Films" Width="1.5" PointX="1.5" PointY="31.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Halls" Width="1.5" PointX="1.5" PointY="34.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.PlaceStatus" Width="1.5" PointX="1.5" PointY="38.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Role" Width="1.5" PointX="1.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.ScheduleOfFilms" Width="1.5" PointX="1.5" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.sysdiagrams" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Tickets" Width="1.5" PointX="1.5" PointY="26.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.User" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.WorkerAdress" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.WorkerInfo" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.City" Width="1.5" PointX="3.75" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.CityWorker" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Country" Width="1.5" PointX="3.75" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.RegionWorker" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Street" Width="1.5" PointX="3.75" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.StreetWorker" Width="1.5" PointX="3" PointY="13.625" IsExpanded="true" />
+        <AssociationConnector Association="DBModel.FK_Cinema_CinemaAdress" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_Cinema_ScheduleOfFilms" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_WorkerInfo_Cinema" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_City_CinemaAdress" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_Country_CinemaAdress" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_Street_CinemaAdress" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_Tickets_Films" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_Halls_PlaceStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_Tickets_Halls" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_UserTable_RoleTable" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_ScheduleOfFilms_Tickets1" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_WorkerInfo_User1" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_CityWorkerTable_AdressOfLivingTable" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_InfoAboutTable_AdressOfLivingTable" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_RegionWorkerTable_AdressOfLivingTable" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_StreetWorkerTable_AdressOfLivingTable" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

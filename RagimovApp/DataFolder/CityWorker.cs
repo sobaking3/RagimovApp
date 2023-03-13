@@ -12,17 +12,11 @@ namespace RagimovApp.DataFolder
     using System;
     using System.Collections.Generic;
     
-    public partial class Order
+    public partial class CityWorker
     {
-        public int IdOrder { get; set; }
-        public int IdClient { get; set; }
-        public string NumberOrder { get; set; }
-        public System.DateTime DateOrder { get; set; }
-        public int IdStatusOrder { get; set; }
-        public decimal PriceOrder { get; set; }
-        public int IdStaff { get; set; }
-        public int IdProduct { get; set; }
+        public int IdCity { get; set; }
+        public string NameCity { get; set; }
     
-        public virtual StatusOrder StatusOrder { get; set; }
+        public virtual WorkerAdress WorkerAdress { get; set; }
     }
 }

@@ -12,24 +12,19 @@ namespace RagimovApp.DataFolder
     using System;
     using System.Collections.Generic;
     
-    public partial class Product
+    public partial class ScheduleOfFilms
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Product()
+        public ScheduleOfFilms()
         {
-            this.ProductAndDetails = new HashSet<ProductAndDetails>();
+            this.Cinema = new HashSet<Cinema>();
         }
     
-        public int IdProduct { get; set; }
-        public string NameProduct { get; set; }
-        public string IssueNumberProduct { get; set; }
-        public decimal CostProduct { get; set; }
-        public System.DateTime GuaranteeProduct { get; set; }
-        public int QualityProduct { get; set; }
-        public int IdWorkshop { get; set; }
+        public int IdShedule { get; set; }
+        public int IdTicket { get; set; }
     
-        public virtual Workshop Workshop { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductAndDetails> ProductAndDetails { get; set; }
+        public virtual ICollection<Cinema> Cinema { get; set; }
+        public virtual Tickets Tickets { get; set; }
     }
 }

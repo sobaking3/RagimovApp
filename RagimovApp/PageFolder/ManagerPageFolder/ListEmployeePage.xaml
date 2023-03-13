@@ -33,7 +33,7 @@
                         <MenuItem Header="Удалить сотрудника"
                                  x:Name="DeleteM1" Click="DeleteM1_Click"/>
                         <MenuItem Header="Изменить сотрудника"
-                                  x:Name="Edit" Click="Edit_Click"/>
+                                  x:Name="Edit"/>
                     </ContextMenu>
                 </ListBox.ContextMenu>
                 <ListBox.ItemTemplate>
@@ -41,6 +41,8 @@
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="70"/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
@@ -55,33 +57,51 @@
                            
                             
                             <Image Grid.RowSpan="4"
-                               Source="{Binding PhotoStaff}"/>
+                               Source="{Binding WorkerPhoto}"/>
                             <TextBlock Grid.Column="1">
                             <Run Text="Фамилия: "
                                  FontWeight="Bold"/>
-                            <Run Text="{Binding LastNameStaff}"/>
+                            <Run Text="{Binding LastName}"/>
                             </TextBlock>
 
                             <TextBlock Grid.Row="1"
                                    Grid.Column="1">
                             <Run Text="Имя: "
                                  FontWeight="Bold"/>
-                            <Run Text="{Binding FirstNameStaff}"/>
+                            <Run Text="{Binding FirstName}"/>
                             </TextBlock>
 
                             <TextBlock Grid.Row="2"
                                    Grid.Column="1">
                             <Run Text="Отчество: "
                                  FontWeight="Bold"/>
-                            <Run Text="{Binding MiddleNameStaff}"/>
+                            <Run Text="{Binding MiddleName}"/>
                             </TextBlock>
+                            
+                            
 
                             <TextBlock Grid.Row="3"
                                    Grid.Column="1"
                                    >
-                            <Run Text="Номер телефона: "
+                            <Run Text="Пол: "
                                  FontWeight="Bold"/>
-                            <Run Text="{Binding NumberPhone}"/>
+                            <Run Text="{Binding Gender}"/>
+                            </TextBlock>
+
+                            <TextBlock
+                                   Grid.Column="2"
+                                   >
+                            <Run Text="Дата рождения: "
+                                 FontWeight="Bold"/>
+                            <Run Text="{Binding DateOfBirth}"/>
+                            </TextBlock>
+
+                            <TextBlock
+                                   Grid.Row="3"
+                                   >
+                            <Run Text="Адрес проживания: "
+                                 FontWeight="Bold"/>
+                            <Run Text="{Binding DateOfBirth}"/>
                             </TextBlock>
 
                             <TextBlock Grid.Column="2">

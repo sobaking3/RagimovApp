@@ -27,7 +27,7 @@ namespace RagimovApp.PageFolder.ManagerPageFolder
         {
             InitializeComponent();
             ListEmployeeLB.ItemsSource = DBEntities.GetContext()
-                .Staff.ToList().OrderBy(s => s.LastNameStaff);
+                .WorkerInfo.ToList().OrderBy(s => s.LastName);
         }
 
         private void SearchTb_TextChanged(object sender, TextChangedEventArgs e)
@@ -37,11 +37,11 @@ namespace RagimovApp.PageFolder.ManagerPageFolder
 
             
             ListEmployeeLB.ItemsSource = DBEntities.GetContext()
-                .Staff.Where(s => s.LastNameStaff
-                .StartsWith(SearchTb.Text) || s.FirstNameStaff
-                .StartsWith(SearchTb.Text) || s.NumberPhone
+                .WorkerInfo.Where(s => s.LastName
+                .StartsWith(SearchTb.Text) || s.FirstName
+                .StartsWith(SearchTb.Text) || s.Number
                 .StartsWith(SearchTb.Text))
-                .ToList().OrderBy(s => s.LastNameStaff);
+                .ToList().OrderBy(s => s.LastName);
             if(ListEmployeeLB.Items.Count <= 0)
             {
                 MBClass.MBError("Данные не найдены");
@@ -58,7 +58,7 @@ namespace RagimovApp.PageFolder.ManagerPageFolder
         {
             try
             {
-                Staff staff = ListEmployeeLB.SelectedItem as Staff;
+                WorkerInfo WorkerInfo = ListEmployeeLB.SelectedItem as WorkerInfo;
 
                 if (ListEmployeeLB.SelectedItem == null)
                 {
@@ -67,9 +67,9 @@ namespace RagimovApp.PageFolder.ManagerPageFolder
                 else
                 {
                     if (MBClass.QuestionMB($"Удалить пользователя " +
-                    $"с Фамилией {staff.LastNameStaff}?"))
+                    $"с Фамилией {WorkerInfo.LastName}?"))
                     {
-                        DBEntities.GetContext().Staff.Remove(ListEmployeeLB.SelectedItem as Staff);
+                        DBEntities.GetContext().WorkerInfo.Remove(ListEmployeeLB.SelectedItem as WorkerInfo);
                         DBEntities.GetContext().SaveChanges();
                         MBClass.MBInfo("Пользователь удален");
                         ListEmployeeLB.ItemsSource = DBEntities.GetContext()
@@ -83,18 +83,18 @@ namespace RagimovApp.PageFolder.ManagerPageFolder
             }
         }
 
-        private void Edit_Click(object sender, RoutedEventArgs e)
-        {
-            if (ListEmployeeLB.SelectedItem == null)
-            {
-                MBClass.MBError("Выберите сотрудника для " +
-                    "редактирования!");
-            }
-            else
-            {
-                NavigationService.Navigate(
-                    new EditUserPage(ListEmployeeLB.SelectedItem as Staff));
-            }
-        }
+        //private void Edit_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if (ListEmployeeLB.SelectedItem == null)
+        //    {
+        //        MBClass.MBError("Выберите сотрудника для " +
+        //            "редактирования!");
+        //    }
+        //    else
+        //    {
+        //        NavigationService.Navigate(
+        //            new EditUserPage(ListEmployeeLB.SelectedItem as WorkerInfo));
+        //    }
+        //}
     }
 }

@@ -39,7 +39,7 @@
         <TextBox x:Name="LastNameTb"
                  Grid.Row="1"
                  Grid.Column="2"
-                 Text="{Binding LastNameStaff}"/>
+                 Text="{Binding LastNameWorkerInfo}"/>
 
         <Label Content="Имя"
                Style="{DynamicResource NormalLabel}"
@@ -48,7 +48,7 @@
         <TextBox x:Name="FirstNameTb"
                  Grid.Row="3"
                  Grid.Column="2"
-                 Text="{Binding FirstNameStaff}"/>
+                 Text="{Binding FirstNameWorkerInfo}"/>
 
         <Label Content="Отчество"
                Style="{DynamicResource NormalLabel}"
@@ -57,7 +57,7 @@
         <TextBox x:Name="MiddleNameTb"
                  Grid.Row="5"
                  Grid.Column="2"
-                 Text="{Binding MiddleNameStaff}"/>
+                 Text="{Binding MiddleNameWorkerInfo}"/>
 
         <Label Content="Номер телефона"
                Style="{DynamicResource NormalLabel}"

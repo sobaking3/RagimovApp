@@ -44,25 +44,25 @@
                             </Grid.RowDefinitions>
 
                             <Image Grid.RowSpan="4"
-                               Source="{Binding PhotoStaff}"/>
+                               Source="{Binding PhotoWorkerInfo}"/>
                             <TextBlock Grid.Column="1">
                             <Run Text="Фамилия: "
                                  FontWeight="Bold"/>
-                            <Run Text="{Binding LastNameStaff}"/>
+                            <Run Text="{Binding LastNameWorkerInfo}"/>
                             </TextBlock>
 
                             <TextBlock Grid.Row="1"
                                    Grid.Column="1">
                             <Run Text="Имя: "
                                  FontWeight="Bold"/>
-                            <Run Text="{Binding FirstNameStaff}"/>
+                            <Run Text="{Binding FirstNameWorkerInfo}"/>
                             </TextBlock>
 
                             <TextBlock Grid.Row="2"
                                    Grid.Column="1">
                             <Run Text="Отчество: "
                                  FontWeight="Bold"/>
-                            <Run Text="{Binding MiddleNameStaff}"/>
+                            <Run Text="{Binding MiddleNameWorkerInfo}"/>
                             </TextBlock>
 
                             <TextBlock Grid.Row="3"

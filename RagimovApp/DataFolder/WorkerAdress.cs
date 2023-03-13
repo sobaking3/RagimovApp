@@ -12,21 +12,31 @@ namespace RagimovApp.DataFolder
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class WorkerAdress
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public WorkerAdress()
         {
+            this.CityWorker = new HashSet<CityWorker>();
             this.WorkerInfo = new HashSet<WorkerInfo>();
+            this.RegionWorker = new HashSet<RegionWorker>();
+            this.StreetWorker = new HashSet<StreetWorker>();
         }
     
-        public int IdUser { get; set; }
-        public int IdRole { get; set; }
-        public string LoginUser { get; set; }
-        public string PasswordUser { get; set; }
+        public int IdAdress { get; set; }
+        public int IdRegion { get; set; }
+        public int IdCity { get; set; }
+        public int IdStreet { get; set; }
+        public string HomeNumber { get; set; }
+        public string AppartmentNumber { get; set; }
     
-        public virtual Role Role { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CityWorker> CityWorker { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WorkerInfo> WorkerInfo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RegionWorker> RegionWorker { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StreetWorker> StreetWorker { get; set; }
     }
 }

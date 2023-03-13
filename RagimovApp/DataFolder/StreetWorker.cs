@@ -12,16 +12,11 @@ namespace RagimovApp.DataFolder
     using System;
     using System.Collections.Generic;
     
-    public partial class Staff
+    public partial class StreetWorker
     {
-        public int IdStaff { get; set; }
-        public string LastNameStaff { get; set; }
-        public string FirstNameStaff { get; set; }
-        public string MiddleNameStaff { get; set; }
-        public string NumberPhone { get; set; }
-        public Nullable<int> IdUser { get; set; }
-        public byte[] PhotoStaff { get; set; }
+        public int IdStreet { get; set; }
+        public string NameStreet { get; set; }
     
-        public virtual User User { get; set; }
+        public virtual WorkerAdress WorkerAdress { get; set; }
     }
 }

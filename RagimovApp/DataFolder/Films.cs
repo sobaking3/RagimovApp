@@ -12,18 +12,24 @@ namespace RagimovApp.DataFolder
     using System;
     using System.Collections.Generic;
     
-    public partial class Details
+    public partial class Films
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Details()
+        public Films()
         {
-            this.DetailsAndMaterial = new HashSet<DetailsAndMaterial>();
+            this.Tickets = new HashSet<Tickets>();
         }
     
-        public int IdDetail { get; set; }
-        public string DetailName { get; set; }
+        public int IdFilm { get; set; }
+        public string FilmName { get; set; }
+        public string Genre { get; set; }
+        public string FilmDirector { get; set; }
+        public string YearOfIssue { get; set; }
+        public string AgeLimit { get; set; }
+        public string Rating { get; set; }
+        public System.TimeSpan Duration { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DetailsAndMaterial> DetailsAndMaterial { get; set; }
+        public virtual ICollection<Tickets> Tickets { get; set; }
     }
 }

@@ -12,15 +12,11 @@ namespace RagimovApp.DataFolder
     using System;
     using System.Collections.Generic;
     
-    public partial class Client
+    public partial class RegionWorker
     {
-        public int IdClient { get; set; }
-        public string LastNameClient { get; set; }
-        public string FirstNameClient { get; set; }
-        public string MiddleNameClient { get; set; }
-        public string NumberPhoneClient { get; set; }
-        public int IdTypeChat { get; set; }
+        public int IdRegion { get; set; }
+        public string NameRegion { get; set; }
     
-        public virtual TypeClient TypeClient { get; set; }
+        public virtual WorkerAdress WorkerAdress { get; set; }
     }
 }

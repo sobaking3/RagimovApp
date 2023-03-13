@@ -25,22 +25,23 @@ namespace RagimovApp.DataFolder
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Client> Client { get; set; }
-        public virtual DbSet<Details> Details { get; set; }
-        public virtual DbSet<DetailsAndMaterial> DetailsAndMaterial { get; set; }
-        public virtual DbSet<Order> Order { get; set; }
-        public virtual DbSet<Product> Product { get; set; }
-        public virtual DbSet<ProductAndDetails> ProductAndDetails { get; set; }
-        public virtual DbSet<Provider> Provider { get; set; }
-        public virtual DbSet<RawMaterial> RawMaterial { get; set; }
+        public virtual DbSet<Cinema> Cinema { get; set; }
+        public virtual DbSet<CinemaAdress> CinemaAdress { get; set; }
+        public virtual DbSet<Films> Films { get; set; }
+        public virtual DbSet<Halls> Halls { get; set; }
+        public virtual DbSet<PlaceStatus> PlaceStatus { get; set; }
         public virtual DbSet<Role> Role { get; set; }
-        public virtual DbSet<Staff> Staff { get; set; }
-        public virtual DbSet<StatusOrder> StatusOrder { get; set; }
-        public virtual DbSet<SupplyMaterial> SupplyMaterial { get; set; }
+        public virtual DbSet<ScheduleOfFilms> ScheduleOfFilms { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<TypeClient> TypeClient { get; set; }
-        public virtual DbSet<TypeRawMaterial> TypeRawMaterial { get; set; }
+        public virtual DbSet<Tickets> Tickets { get; set; }
         public virtual DbSet<User> User { get; set; }
-        public virtual DbSet<Workshop> Workshop { get; set; }
+        public virtual DbSet<WorkerAdress> WorkerAdress { get; set; }
+        public virtual DbSet<WorkerInfo> WorkerInfo { get; set; }
+        public virtual DbSet<City> City { get; set; }
+        public virtual DbSet<CityWorker> CityWorker { get; set; }
+        public virtual DbSet<Country> Country { get; set; }
+        public virtual DbSet<RegionWorker> RegionWorker { get; set; }
+        public virtual DbSet<Street> Street { get; set; }
+        public virtual DbSet<StreetWorker> StreetWorker { get; set; }
     }
 }

@@ -5,116 +5,130 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="Хранилище DBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Client">
+        <EntityType Name="Cinema">
           <Key>
-            <PropertyRef Name="IdClient" />
+            <PropertyRef Name="IdCinema" />
           </Key>
-          <Property Name="IdClient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="LastNameClient" Type="nvarchar" MaxLength="70" Nullable="false" />
-          <Property Name="FirstNameClient" Type="nvarchar" MaxLength="70" Nullable="false" />
-          <Property Name="MiddleNameClient" Type="nvarchar" MaxLength="70" />
-          <Property Name="NumberPhoneClient" Type="nvarchar" MaxLength="17" Nullable="false" />
-          <Property Name="IdTypeChat" Type="int" Nullable="false" />
+          <Property Name="IdCinema" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CinemaName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="IdCinemaAdress" Type="int" Nullable="false" />
+          <Property Name="NumberOfHalls" Type="int" Nullable="false" />
+          <Property Name="OpeningTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="ClosingTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="PhoneOfCinema" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="IdShedule" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Details">
+        <EntityType Name="CinemaAdress">
           <Key>
-            <PropertyRef Name="IdDetail" />
+            <PropertyRef Name="IdCinemaAdress" />
           </Key>
-          <Property Name="IdDetail" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="DetailName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdCinemaAdress" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCountry" Type="int" Nullable="false" />
+          <Property Name="IdCity" Type="int" Nullable="false" />
+          <Property Name="IdStreet" Type="int" Nullable="false" />
+          <Property Name="Build" Type="nvarchar" MaxLength="5" Nullable="false" />
         </EntityType>
-        <EntityType Name="DetailsAndMaterial">
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "CinemaNetwork.dbo.City" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="City">
           <Key>
-            <PropertyRef Name="IdDetailsAndMaterial" />
+            <PropertyRef Name="IdCity" />
+            <PropertyRef Name="NameCity" />
           </Key>
-          <Property Name="IdDetailsAndMaterial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdRawMaterial" Type="int" Nullable="false" />
-          <Property Name="IdDetail" Type="int" Nullable="false" />
+          <Property Name="IdCity" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameCity" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
-        <EntityType Name="Order">
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "CinemaNetwork.dbo.CityWorker" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="CityWorker">
           <Key>
-            <PropertyRef Name="IdOrder" />
+            <PropertyRef Name="IdCity" />
+            <PropertyRef Name="NameCity" />
           </Key>
-          <Property Name="IdOrder" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdClient" Type="int" Nullable="false" />
-          <Property Name="NumberOrder" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="DateOrder" Type="date" Nullable="false" />
-          <Property Name="IdStatusOrder" Type="int" Nullable="false" />
-          <Property Name="PriceOrder" Type="decimal" Precision="10" Scale="2" Nullable="false" />
-          <Property Name="IdStaff" Type="int" Nullable="false" />
-          <Property Name="IdProduct" Type="int" Nullable="false" />
+          <Property Name="IdCity" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameCity" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="Product">
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "CinemaNetwork.dbo.Country" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Country">
           <Key>
-            <PropertyRef Name="IdProduct" />
+            <PropertyRef Name="IdCountry" />
+            <PropertyRef Name="NameCountry" />
           </Key>
-          <Property Name="IdProduct" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NameProduct" Type="nvarchar" MaxLength="70" Nullable="false" />
-          <Property Name="IssueNumberProduct" Type="nvarchar" MaxLength="70" Nullable="false" />
-          <Property Name="CostProduct" Type="decimal" Precision="10" Scale="2" Nullable="false" />
-          <Property Name="GuaranteeProduct" Type="date" Nullable="false" />
-          <Property Name="QualityProduct" Type="int" Nullable="false" />
-          <Property Name="IdWorkshop" Type="int" Nullable="false" />
+          <Property Name="IdCountry" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameCountry" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
-        <EntityType Name="ProductAndDetails">
+        <EntityType Name="Films">
           <Key>
-            <PropertyRef Name="IdProductAndDetails" />
+            <PropertyRef Name="IdFilm" />
           </Key>
-          <Property Name="IdProductAndDetails" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdProduct" Type="int" Nullable="false" />
-          <Property Name="IdDetailsAndRawMaterial" Type="int" Nullable="false" />
+          <Property Name="IdFilm" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FilmName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Genre" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="FilmDirector" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="YearOfIssue" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="AgeLimit" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="Rating" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="Duration" Type="time" Precision="7" Nullable="false" />
         </EntityType>
-        <EntityType Name="Provider">
+        <EntityType Name="Halls">
           <Key>
-            <PropertyRef Name="IdProvider" />
+            <PropertyRef Name="IdHall" />
           </Key>
-          <Property Name="IdProvider" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ProviderName" Type="nvarchar" MaxLength="50" />
-          <Property Name="Number" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdHall" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HallName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="IdPlaceStatus" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="RawMaterial">
+        <EntityType Name="PlaceStatus">
           <Key>
-            <PropertyRef Name="IdRawMaterial" />
+            <PropertyRef Name="IdPlaceStatus" />
           </Key>
-          <Property Name="IdRawMaterial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RawName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="IdTypeRawMaterial" Type="int" Nullable="false" />
-          <Property Name="CostRawMaterial" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="IdPlaceStatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlaceStatus" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "CinemaNetwork.dbo.RegionWorker" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="RegionWorker">
+          <Key>
+            <PropertyRef Name="IdRegion" />
+            <PropertyRef Name="NameRegion" />
+          </Key>
+          <Property Name="IdRegion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameRegion" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="IdRole" />
           </Key>
           <Property Name="IdRole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NameRole" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="NameRole" Type="nvarchar" MaxLength="80" Nullable="false" />
         </EntityType>
-        <EntityType Name="Staff">
+        <EntityType Name="ScheduleOfFilms">
           <Key>
-            <PropertyRef Name="IdStaff" />
+            <PropertyRef Name="IdShedule" />
           </Key>
-          <Property Name="IdStaff" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="LastNameStaff" Type="nvarchar" MaxLength="70" Nullable="false" />
-          <Property Name="FirstNameStaff" Type="nvarchar" MaxLength="70" Nullable="false" />
-          <Property Name="MiddleNameStaff" Type="nvarchar" MaxLength="70" />
-          <Property Name="NumberPhone" Type="nvarchar" MaxLength="70" Nullable="false" />
-          <Property Name="IdUser" Type="int" />
-          <Property Name="PhotoStaff" Type="varbinary(max)" />
+          <Property Name="IdShedule" Type="int" Nullable="false" />
+          <Property Name="IdTicket" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="StatusOrder">
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "CinemaNetwork.dbo.Street" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Street">
           <Key>
-            <PropertyRef Name="IdStatusOrder" />
+            <PropertyRef Name="IdStreet" />
+            <PropertyRef Name="StreetName" />
           </Key>
-          <Property Name="IdStatusOrder" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NameStatusOrder" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="IdStreet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StreetName" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
-        <EntityType Name="SupplyMaterial">
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "CinemaNetwork.dbo.StreetWorker" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="StreetWorker">
           <Key>
-            <PropertyRef Name="IdSupply" />
+            <PropertyRef Name="IdStreet" />
+            <PropertyRef Name="NameStreet" />
           </Key>
-          <Property Name="IdSupply" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdRawMaterial" Type="int" Nullable="false" />
-          <Property Name="IdProvider" Type="int" Nullable="false" />
-          <Property Name="CountSupply" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="IdStreet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameStreet" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -126,170 +140,215 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <EntityType Name="TypeClient">
+        <EntityType Name="Tickets">
           <Key>
-            <PropertyRef Name="IdTypeClient" />
+            <PropertyRef Name="IdTicket" />
           </Key>
-          <Property Name="IdTypeClient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NameTypeClient" Type="nvarchar" MaxLength="70" Nullable="false" />
-        </EntityType>
-        <EntityType Name="TypeRawMaterial">
-          <Key>
-            <PropertyRef Name="IdTypeRawMaterial" />
-          </Key>
-          <Property Name="IdTypeRawMaterial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NameTypeRawMaterial" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdTicket" Type="int" Nullable="false" />
+          <Property Name="IdFilm" Type="int" Nullable="false" />
+          <Property Name="StartingDate" Type="datetime" Nullable="false" />
+          <Property Name="IdHall" Type="int" Nullable="false" />
+          <Property Name="Cost" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="SellingDate" Type="datetime" Nullable="false" />
+          <Property Name="RowNumber" Type="int" Nullable="false" />
+          <Property Name="PlaceNumber" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="IdUser" />
           </Key>
           <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="LoginUser" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="PasswordUser" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="IdRole" Type="int" Nullable="false" />
+          <Property Name="LoginUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PasswordUser" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="Workshop">
+        <EntityType Name="WorkerAdress">
           <Key>
-            <PropertyRef Name="IdWorkShop" />
+            <PropertyRef Name="IdAdress" />
           </Key>
-          <Property Name="IdWorkShop" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="WorkShopName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="WorkShopNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdAdress" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdRegion" Type="int" Nullable="false" />
+          <Property Name="IdCity" Type="int" Nullable="false" />
+          <Property Name="IdStreet" Type="int" Nullable="false" />
+          <Property Name="HomeNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="AppartmentNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Client_TypeClient">
-          <End Role="TypeClient" Type="Self.TypeClient" Multiplicity="1" />
-          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+        <EntityType Name="WorkerInfo">
+          <Key>
+            <PropertyRef Name="IdInfoAbout" />
+          </Key>
+          <Property Name="IdInfoAbout" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gender" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="DateOfBirth" Type="date" Nullable="false" />
+          <Property Name="IdAdressOfLiving" Type="int" Nullable="false" />
+          <Property Name="Number" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Education" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WorkExpirience" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdCinema" Type="int" Nullable="false" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="WorkerPhoto" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Cinema_CinemaAdress">
+          <End Role="CinemaAdress" Type="Self.CinemaAdress" Multiplicity="1" />
+          <End Role="Cinema" Type="Self.Cinema" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TypeClient">
-              <PropertyRef Name="IdTypeClient" />
+            <Principal Role="CinemaAdress">
+              <PropertyRef Name="IdCinemaAdress" />
             </Principal>
-            <Dependent Role="Client">
-              <PropertyRef Name="IdTypeChat" />
+            <Dependent Role="Cinema">
+              <PropertyRef Name="IdCinemaAdress" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_DetailsAndMaterial_Details">
-          <End Role="Details" Type="Self.Details" Multiplicity="1" />
-          <End Role="DetailsAndMaterial" Type="Self.DetailsAndMaterial" Multiplicity="*" />
+        <Association Name="FK_Cinema_ScheduleOfFilms">
+          <End Role="ScheduleOfFilms" Type="Self.ScheduleOfFilms" Multiplicity="1" />
+          <End Role="Cinema" Type="Self.Cinema" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Details">
-              <PropertyRef Name="IdDetail" />
+            <Principal Role="ScheduleOfFilms">
+              <PropertyRef Name="IdShedule" />
             </Principal>
-            <Dependent Role="DetailsAndMaterial">
-              <PropertyRef Name="IdDetail" />
+            <Dependent Role="Cinema">
+              <PropertyRef Name="IdShedule" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_DetailsAndMaterial_RawMaterial">
-          <End Role="RawMaterial" Type="Self.RawMaterial" Multiplicity="1" />
-          <End Role="DetailsAndMaterial" Type="Self.DetailsAndMaterial" Multiplicity="*" />
+        <Association Name="FK_City_CinemaAdress">
+          <End Role="CinemaAdress" Type="Self.CinemaAdress" Multiplicity="1" />
+          <End Role="City" Type="Self.City" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="RawMaterial">
-              <PropertyRef Name="IdRawMaterial" />
+            <Principal Role="CinemaAdress">
+              <PropertyRef Name="IdCinemaAdress" />
             </Principal>
-            <Dependent Role="DetailsAndMaterial">
-              <PropertyRef Name="IdRawMaterial" />
+            <Dependent Role="City">
+              <PropertyRef Name="IdCity" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order_StatusOrder">
-          <End Role="StatusOrder" Type="Self.StatusOrder" Multiplicity="1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+        <Association Name="FK_CityWorkerTable_AdressOfLivingTable">
+          <End Role="WorkerAdress" Type="Self.WorkerAdress" Multiplicity="1" />
+          <End Role="CityWorker" Type="Self.CityWorker" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="StatusOrder">
-              <PropertyRef Name="IdStatusOrder" />
+            <Principal Role="WorkerAdress">
+              <PropertyRef Name="IdAdress" />
             </Principal>
-            <Dependent Role="Order">
-              <PropertyRef Name="IdStatusOrder" />
+            <Dependent Role="CityWorker">
+              <PropertyRef Name="IdCity" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Product_Workshop">
-          <End Role="Workshop" Type="Self.Workshop" Multiplicity="1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+        <Association Name="FK_Country_CinemaAdress">
+          <End Role="CinemaAdress" Type="Self.CinemaAdress" Multiplicity="1" />
+          <End Role="Country" Type="Self.Country" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Workshop">
-              <PropertyRef Name="IdWorkShop" />
+            <Principal Role="CinemaAdress">
+              <PropertyRef Name="IdCinemaAdress" />
             </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="IdWorkshop" />
+            <Dependent Role="Country">
+              <PropertyRef Name="IdCountry" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProductAndDetails_DetailsAndMaterial">
-          <End Role="DetailsAndMaterial" Type="Self.DetailsAndMaterial" Multiplicity="1" />
-          <End Role="ProductAndDetails" Type="Self.ProductAndDetails" Multiplicity="*" />
+        <Association Name="FK_Halls_PlaceStatus">
+          <End Role="PlaceStatus" Type="Self.PlaceStatus" Multiplicity="1" />
+          <End Role="Halls" Type="Self.Halls" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="DetailsAndMaterial">
-              <PropertyRef Name="IdDetailsAndMaterial" />
+            <Principal Role="PlaceStatus">
+              <PropertyRef Name="IdPlaceStatus" />
             </Principal>
-            <Dependent Role="ProductAndDetails">
-              <PropertyRef Name="IdDetailsAndRawMaterial" />
+            <Dependent Role="Halls">
+              <PropertyRef Name="IdPlaceStatus" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProductAndDetails_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
-          <End Role="ProductAndDetails" Type="Self.ProductAndDetails" Multiplicity="*" />
+        <Association Name="FK_InfoAboutTable_AdressOfLivingTable">
+          <End Role="WorkerAdress" Type="Self.WorkerAdress" Multiplicity="1" />
+          <End Role="WorkerInfo" Type="Self.WorkerInfo" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="IdProduct" />
+            <Principal Role="WorkerAdress">
+              <PropertyRef Name="IdAdress" />
             </Principal>
-            <Dependent Role="ProductAndDetails">
-              <PropertyRef Name="IdProduct" />
+            <Dependent Role="WorkerInfo">
+              <PropertyRef Name="IdAdressOfLiving" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_RawMaterial_TypeRawMaterial">
-          <End Role="TypeRawMaterial" Type="Self.TypeRawMaterial" Multiplicity="1" />
-          <End Role="RawMaterial" Type="Self.RawMaterial" Multiplicity="*" />
+        <Association Name="FK_RegionWorkerTable_AdressOfLivingTable">
+          <End Role="WorkerAdress" Type="Self.WorkerAdress" Multiplicity="1" />
+          <End Role="RegionWorker" Type="Self.RegionWorker" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TypeRawMaterial">
-              <PropertyRef Name="IdTypeRawMaterial" />
+            <Principal Role="WorkerAdress">
+              <PropertyRef Name="IdAdress" />
             </Principal>
-            <Dependent Role="RawMaterial">
-              <PropertyRef Name="IdTypeRawMaterial" />
+            <Dependent Role="RegionWorker">
+              <PropertyRef Name="IdRegion" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Staff_User">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+        <Association Name="FK_ScheduleOfFilms_Tickets1">
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="1" />
+          <End Role="ScheduleOfFilms" Type="Self.ScheduleOfFilms" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="IdUser" />
+            <Principal Role="Tickets">
+              <PropertyRef Name="IdTicket" />
             </Principal>
-            <Dependent Role="Staff">
-              <PropertyRef Name="IdUser" />
+            <Dependent Role="ScheduleOfFilms">
+              <PropertyRef Name="IdTicket" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SupplyMaterial_Provider">
-          <End Role="Provider" Type="Self.Provider" Multiplicity="1" />
-          <End Role="SupplyMaterial" Type="Self.SupplyMaterial" Multiplicity="*" />
+        <Association Name="FK_Street_CinemaAdress">
+          <End Role="CinemaAdress" Type="Self.CinemaAdress" Multiplicity="1" />
+          <End Role="Street" Type="Self.Street" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Provider">
-              <PropertyRef Name="IdProvider" />
+            <Principal Role="CinemaAdress">
+              <PropertyRef Name="IdCinemaAdress" />
             </Principal>
-            <Dependent Role="SupplyMaterial">
-              <PropertyRef Name="IdProvider" />
+            <Dependent Role="Street">
+              <PropertyRef Name="IdStreet" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SupplyMaterial_RawMaterial">
-          <End Role="RawMaterial" Type="Self.RawMaterial" Multiplicity="1" />
-          <End Role="SupplyMaterial" Type="Self.SupplyMaterial" Multiplicity="*" />
+        <Association Name="FK_StreetWorkerTable_AdressOfLivingTable">
+          <End Role="WorkerAdress" Type="Self.WorkerAdress" Multiplicity="1" />
+          <End Role="StreetWorker" Type="Self.StreetWorker" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="RawMaterial">
-              <PropertyRef Name="IdRawMaterial" />
+            <Principal Role="WorkerAdress">
+              <PropertyRef Name="IdAdress" />
             </Principal>
-            <Dependent Role="SupplyMaterial">
-              <PropertyRef Name="IdRawMaterial" />
+            <Dependent Role="StreetWorker">
+              <PropertyRef Name="IdStreet" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_User_Role">
+        <Association Name="FK_Tickets_Films">
+          <End Role="Films" Type="Self.Films" Multiplicity="1" />
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Films">
+              <PropertyRef Name="IdFilm" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="IdFilm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tickets_Halls">
+          <End Role="Halls" Type="Self.Halls" Multiplicity="1" />
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Halls">
+              <PropertyRef Name="IdHall" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="IdHall" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTable_RoleTable">
           <End Role="Role" Type="Self.Role" Multiplicity="1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
           <ReferentialConstraint>
@@ -301,71 +360,142 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_WorkerInfo_Cinema">
+          <End Role="Cinema" Type="Self.Cinema" Multiplicity="1" />
+          <End Role="WorkerInfo" Type="Self.WorkerInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cinema">
+              <PropertyRef Name="IdCinema" />
+            </Principal>
+            <Dependent Role="WorkerInfo">
+              <PropertyRef Name="IdCinema" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkerInfo_User1">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="WorkerInfo" Type="Self.WorkerInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="WorkerInfo">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище DBModelContainer">
-          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Details" EntityType="Self.Details" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DetailsAndMaterial" EntityType="Self.DetailsAndMaterial" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ProductAndDetails" EntityType="Self.ProductAndDetails" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Provider" EntityType="Self.Provider" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="RawMaterial" EntityType="Self.RawMaterial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cinema" EntityType="Self.Cinema" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CinemaAdress" EntityType="Self.CinemaAdress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Films" EntityType="Self.Films" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Halls" EntityType="Self.Halls" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlaceStatus" EntityType="Self.PlaceStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="StatusOrder" EntityType="Self.StatusOrder" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SupplyMaterial" EntityType="Self.SupplyMaterial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ScheduleOfFilms" EntityType="Self.ScheduleOfFilms" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TypeClient" EntityType="Self.TypeClient" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TypeRawMaterial" EntityType="Self.TypeRawMaterial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tickets" EntityType="Self.Tickets" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Workshop" EntityType="Self.Workshop" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Client_TypeClient" Association="Self.FK_Client_TypeClient">
-            <End Role="TypeClient" EntitySet="TypeClient" />
-            <End Role="Client" EntitySet="Client" />
+          <EntitySet Name="WorkerAdress" EntityType="Self.WorkerAdress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkerInfo" EntityType="Self.WorkerInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [City].[IdCity] AS [IdCity], 
+    [City].[NameCity] AS [NameCity]
+    FROM [dbo].[City] AS [City]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CityWorker" EntityType="Self.CityWorker" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CityWorker].[IdCity] AS [IdCity], 
+    [CityWorker].[NameCity] AS [NameCity]
+    FROM [dbo].[CityWorker] AS [CityWorker]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Country" EntityType="Self.Country" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Country].[IdCountry] AS [IdCountry], 
+    [Country].[NameCountry] AS [NameCountry]
+    FROM [dbo].[Country] AS [Country]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="RegionWorker" EntityType="Self.RegionWorker" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [RegionWorker].[IdRegion] AS [IdRegion], 
+    [RegionWorker].[NameRegion] AS [NameRegion]
+    FROM [dbo].[RegionWorker] AS [RegionWorker]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Street" EntityType="Self.Street" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Street].[IdStreet] AS [IdStreet], 
+    [Street].[StreetName] AS [StreetName]
+    FROM [dbo].[Street] AS [Street]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="StreetWorker" EntityType="Self.StreetWorker" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [StreetWorker].[IdStreet] AS [IdStreet], 
+    [StreetWorker].[NameStreet] AS [NameStreet]
+    FROM [dbo].[StreetWorker] AS [StreetWorker]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Cinema_CinemaAdress" Association="Self.FK_Cinema_CinemaAdress">
+            <End Role="CinemaAdress" EntitySet="CinemaAdress" />
+            <End Role="Cinema" EntitySet="Cinema" />
           </AssociationSet>
-          <AssociationSet Name="FK_DetailsAndMaterial_Details" Association="Self.FK_DetailsAndMaterial_Details">
-            <End Role="Details" EntitySet="Details" />
-            <End Role="DetailsAndMaterial" EntitySet="DetailsAndMaterial" />
+          <AssociationSet Name="FK_Cinema_ScheduleOfFilms" Association="Self.FK_Cinema_ScheduleOfFilms">
+            <End Role="ScheduleOfFilms" EntitySet="ScheduleOfFilms" />
+            <End Role="Cinema" EntitySet="Cinema" />
           </AssociationSet>
-          <AssociationSet Name="FK_DetailsAndMaterial_RawMaterial" Association="Self.FK_DetailsAndMaterial_RawMaterial">
-            <End Role="RawMaterial" EntitySet="RawMaterial" />
-            <End Role="DetailsAndMaterial" EntitySet="DetailsAndMaterial" />
+          <AssociationSet Name="FK_City_CinemaAdress" Association="Self.FK_City_CinemaAdress">
+            <End Role="CinemaAdress" EntitySet="CinemaAdress" />
+            <End Role="City" EntitySet="City" />
           </AssociationSet>
-          <AssociationSet Name="FK_Order_StatusOrder" Association="Self.FK_Order_StatusOrder">
-            <End Role="StatusOrder" EntitySet="StatusOrder" />
-            <End Role="Order" EntitySet="Order" />
+          <AssociationSet Name="FK_CityWorkerTable_AdressOfLivingTable" Association="Self.FK_CityWorkerTable_AdressOfLivingTable">
+            <End Role="WorkerAdress" EntitySet="WorkerAdress" />
+            <End Role="CityWorker" EntitySet="CityWorker" />
           </AssociationSet>
-          <AssociationSet Name="FK_Product_Workshop" Association="Self.FK_Product_Workshop">
-            <End Role="Workshop" EntitySet="Workshop" />
-            <End Role="Product" EntitySet="Product" />
+          <AssociationSet Name="FK_Country_CinemaAdress" Association="Self.FK_Country_CinemaAdress">
+            <End Role="CinemaAdress" EntitySet="CinemaAdress" />
+            <End Role="Country" EntitySet="Country" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProductAndDetails_DetailsAndMaterial" Association="Self.FK_ProductAndDetails_DetailsAndMaterial">
-            <End Role="DetailsAndMaterial" EntitySet="DetailsAndMaterial" />
-            <End Role="ProductAndDetails" EntitySet="ProductAndDetails" />
+          <AssociationSet Name="FK_Halls_PlaceStatus" Association="Self.FK_Halls_PlaceStatus">
+            <End Role="PlaceStatus" EntitySet="PlaceStatus" />
+            <End Role="Halls" EntitySet="Halls" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProductAndDetails_Product" Association="Self.FK_ProductAndDetails_Product">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="ProductAndDetails" EntitySet="ProductAndDetails" />
+          <AssociationSet Name="FK_InfoAboutTable_AdressOfLivingTable" Association="Self.FK_InfoAboutTable_AdressOfLivingTable">
+            <End Role="WorkerAdress" EntitySet="WorkerAdress" />
+            <End Role="WorkerInfo" EntitySet="WorkerInfo" />
           </AssociationSet>
-          <AssociationSet Name="FK_RawMaterial_TypeRawMaterial" Association="Self.FK_RawMaterial_TypeRawMaterial">
-            <End Role="TypeRawMaterial" EntitySet="TypeRawMaterial" />
-            <End Role="RawMaterial" EntitySet="RawMaterial" />
+          <AssociationSet Name="FK_RegionWorkerTable_AdressOfLivingTable" Association="Self.FK_RegionWorkerTable_AdressOfLivingTable">
+            <End Role="WorkerAdress" EntitySet="WorkerAdress" />
+            <End Role="RegionWorker" EntitySet="RegionWorker" />
           </AssociationSet>
-          <AssociationSet Name="FK_Staff_User" Association="Self.FK_Staff_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="Staff" EntitySet="Staff" />
+          <AssociationSet Name="FK_ScheduleOfFilms_Tickets1" Association="Self.FK_ScheduleOfFilms_Tickets1">
+            <End Role="Tickets" EntitySet="Tickets" />
+            <End Role="ScheduleOfFilms" EntitySet="ScheduleOfFilms" />
           </AssociationSet>
-          <AssociationSet Name="FK_SupplyMaterial_Provider" Association="Self.FK_SupplyMaterial_Provider">
-            <End Role="Provider" EntitySet="Provider" />
-            <End Role="SupplyMaterial" EntitySet="SupplyMaterial" />
+          <AssociationSet Name="FK_Street_CinemaAdress" Association="Self.FK_Street_CinemaAdress">
+            <End Role="CinemaAdress" EntitySet="CinemaAdress" />
+            <End Role="Street" EntitySet="Street" />
           </AssociationSet>
-          <AssociationSet Name="FK_SupplyMaterial_RawMaterial" Association="Self.FK_SupplyMaterial_RawMaterial">
-            <End Role="RawMaterial" EntitySet="RawMaterial" />
-            <End Role="SupplyMaterial" EntitySet="SupplyMaterial" />
+          <AssociationSet Name="FK_StreetWorkerTable_AdressOfLivingTable" Association="Self.FK_StreetWorkerTable_AdressOfLivingTable">
+            <End Role="WorkerAdress" EntitySet="WorkerAdress" />
+            <End Role="StreetWorker" EntitySet="StreetWorker" />
           </AssociationSet>
-          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+          <AssociationSet Name="FK_Tickets_Films" Association="Self.FK_Tickets_Films">
+            <End Role="Films" EntitySet="Films" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tickets_Halls" Association="Self.FK_Tickets_Halls">
+            <End Role="Halls" EntitySet="Halls" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTable_RoleTable" Association="Self.FK_UserTable_RoleTable">
             <End Role="Role" EntitySet="Role" />
             <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkerInfo_Cinema" Association="Self.FK_WorkerInfo_Cinema">
+            <End Role="Cinema" EntitySet="Cinema" />
+            <End Role="WorkerInfo" EntitySet="WorkerInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkerInfo_User1" Association="Self.FK_WorkerInfo_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="WorkerInfo" EntitySet="WorkerInfo" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -373,135 +503,84 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Client">
+        <EntityType Name="Cinema">
           <Key>
-            <PropertyRef Name="IdClient" />
+            <PropertyRef Name="IdCinema" />
           </Key>
-          <Property Name="IdClient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LastNameClient" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FirstNameClient" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MiddleNameClient" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
-          <Property Name="NumberPhoneClient" Type="String" MaxLength="17" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IdTypeChat" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="TypeClient" Relationship="Self.FK_Client_TypeClient" FromRole="Client" ToRole="TypeClient" />
+          <Property Name="IdCinema" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CinemaName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdCinemaAdress" Type="Int32" Nullable="false" />
+          <Property Name="NumberOfHalls" Type="Int32" Nullable="false" />
+          <Property Name="OpeningTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="ClosingTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="PhoneOfCinema" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdShedule" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CinemaAdress" Relationship="Self.FK_Cinema_CinemaAdress" FromRole="Cinema" ToRole="CinemaAdress" />
+          <NavigationProperty Name="ScheduleOfFilms" Relationship="Self.FK_Cinema_ScheduleOfFilms" FromRole="Cinema" ToRole="ScheduleOfFilms" />
+          <NavigationProperty Name="WorkerInfo" Relationship="Self.FK_WorkerInfo_Cinema" FromRole="Cinema" ToRole="WorkerInfo" />
         </EntityType>
-        <EntityType Name="Details">
+        <EntityType Name="CinemaAdress">
           <Key>
-            <PropertyRef Name="IdDetail" />
+            <PropertyRef Name="IdCinemaAdress" />
           </Key>
-          <Property Name="IdDetail" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DetailName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="DetailsAndMaterial" Relationship="Self.FK_DetailsAndMaterial_Details" FromRole="Details" ToRole="DetailsAndMaterial" />
+          <Property Name="IdCinemaAdress" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCountry" Type="Int32" Nullable="false" />
+          <Property Name="IdCity" Type="Int32" Nullable="false" />
+          <Property Name="IdStreet" Type="Int32" Nullable="false" />
+          <Property Name="Build" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cinema" Relationship="Self.FK_Cinema_CinemaAdress" FromRole="CinemaAdress" ToRole="Cinema" />
+          <NavigationProperty Name="City" Relationship="Self.FK_City_CinemaAdress" FromRole="CinemaAdress" ToRole="City" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Country_CinemaAdress" FromRole="CinemaAdress" ToRole="Country" />
+          <NavigationProperty Name="Street" Relationship="Self.FK_Street_CinemaAdress" FromRole="CinemaAdress" ToRole="Street" />
         </EntityType>
-        <EntityType Name="DetailsAndMaterial">
+        <EntityType Name="Films">
           <Key>
-            <PropertyRef Name="IdDetailsAndMaterial" />
+            <PropertyRef Name="IdFilm" />
           </Key>
-          <Property Name="IdDetailsAndMaterial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdRawMaterial" Type="Int32" Nullable="false" />
-          <Property Name="IdDetail" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Details" Relationship="Self.FK_DetailsAndMaterial_Details" FromRole="DetailsAndMaterial" ToRole="Details" />
-          <NavigationProperty Name="RawMaterial" Relationship="Self.FK_DetailsAndMaterial_RawMaterial" FromRole="DetailsAndMaterial" ToRole="RawMaterial" />
-          <NavigationProperty Name="ProductAndDetails" Relationship="Self.FK_ProductAndDetails_DetailsAndMaterial" FromRole="DetailsAndMaterial" ToRole="ProductAndDetails" />
+          <Property Name="IdFilm" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FilmName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Genre" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FilmDirector" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="YearOfIssue" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AgeLimit" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Rating" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Duration" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Tickets" Relationship="Self.FK_Tickets_Films" FromRole="Films" ToRole="Tickets" />
         </EntityType>
-        <EntityType Name="Order">
+        <EntityType Name="Halls">
           <Key>
-            <PropertyRef Name="IdOrder" />
+            <PropertyRef Name="IdHall" />
           </Key>
-          <Property Name="IdOrder" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdClient" Type="Int32" Nullable="false" />
-          <Property Name="NumberOrder" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DateOrder" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="IdStatusOrder" Type="Int32" Nullable="false" />
-          <Property Name="PriceOrder" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-          <Property Name="IdStaff" Type="Int32" Nullable="false" />
-          <Property Name="IdProduct" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="StatusOrder" Relationship="Self.FK_Order_StatusOrder" FromRole="Order" ToRole="StatusOrder" />
+          <Property Name="IdHall" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HallName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdPlaceStatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PlaceStatus" Relationship="Self.FK_Halls_PlaceStatus" FromRole="Halls" ToRole="PlaceStatus" />
+          <NavigationProperty Name="Tickets" Relationship="Self.FK_Tickets_Halls" FromRole="Halls" ToRole="Tickets" />
         </EntityType>
-        <EntityType Name="Product">
+        <EntityType Name="PlaceStatus">
           <Key>
-            <PropertyRef Name="IdProduct" />
+            <PropertyRef Name="IdPlaceStatus" />
           </Key>
-          <Property Name="IdProduct" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NameProduct" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IssueNumberProduct" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CostProduct" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-          <Property Name="GuaranteeProduct" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="QualityProduct" Type="Int32" Nullable="false" />
-          <Property Name="IdWorkshop" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Workshop" Relationship="Self.FK_Product_Workshop" FromRole="Product" ToRole="Workshop" />
-          <NavigationProperty Name="ProductAndDetails" Relationship="Self.FK_ProductAndDetails_Product" FromRole="Product" ToRole="ProductAndDetails" />
-        </EntityType>
-        <EntityType Name="ProductAndDetails">
-          <Key>
-            <PropertyRef Name="IdProductAndDetails" />
-          </Key>
-          <Property Name="IdProductAndDetails" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdProduct" Type="Int32" Nullable="false" />
-          <Property Name="IdDetailsAndRawMaterial" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="DetailsAndMaterial" Relationship="Self.FK_ProductAndDetails_DetailsAndMaterial" FromRole="ProductAndDetails" ToRole="DetailsAndMaterial" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_ProductAndDetails_Product" FromRole="ProductAndDetails" ToRole="Product" />
-        </EntityType>
-        <EntityType Name="Provider">
-          <Key>
-            <PropertyRef Name="IdProvider" />
-          </Key>
-          <Property Name="IdProvider" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProviderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="SupplyMaterial" Relationship="Self.FK_SupplyMaterial_Provider" FromRole="Provider" ToRole="SupplyMaterial" />
-        </EntityType>
-        <EntityType Name="RawMaterial">
-          <Key>
-            <PropertyRef Name="IdRawMaterial" />
-          </Key>
-          <Property Name="IdRawMaterial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RawName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IdTypeRawMaterial" Type="Int32" Nullable="false" />
-          <Property Name="CostRawMaterial" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="DetailsAndMaterial" Relationship="Self.FK_DetailsAndMaterial_RawMaterial" FromRole="RawMaterial" ToRole="DetailsAndMaterial" />
-          <NavigationProperty Name="TypeRawMaterial" Relationship="Self.FK_RawMaterial_TypeRawMaterial" FromRole="RawMaterial" ToRole="TypeRawMaterial" />
-          <NavigationProperty Name="SupplyMaterial" Relationship="Self.FK_SupplyMaterial_RawMaterial" FromRole="RawMaterial" ToRole="SupplyMaterial" />
+          <Property Name="IdPlaceStatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlaceStatus1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Halls" Relationship="Self.FK_Halls_PlaceStatus" FromRole="PlaceStatus" ToRole="Halls" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="IdRole" />
           </Key>
           <Property Name="IdRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NameRole" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
+          <Property Name="NameRole" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserTable_RoleTable" FromRole="Role" ToRole="User" />
         </EntityType>
-        <EntityType Name="Staff">
+        <EntityType Name="ScheduleOfFilms">
           <Key>
-            <PropertyRef Name="IdStaff" />
+            <PropertyRef Name="IdShedule" />
           </Key>
-          <Property Name="IdStaff" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LastNameStaff" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FirstNameStaff" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MiddleNameStaff" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
-          <Property Name="NumberPhone" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IdUser" Type="Int32" />
-          <Property Name="PhotoStaff" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Staff_User" FromRole="Staff" ToRole="User" />
-        </EntityType>
-        <EntityType Name="StatusOrder">
-          <Key>
-            <PropertyRef Name="IdStatusOrder" />
-          </Key>
-          <Property Name="IdStatusOrder" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NameStatusOrder" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_Order_StatusOrder" FromRole="StatusOrder" ToRole="Order" />
-        </EntityType>
-        <EntityType Name="SupplyMaterial">
-          <Key>
-            <PropertyRef Name="IdSupply" />
-          </Key>
-          <Property Name="IdSupply" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdRawMaterial" Type="Int32" Nullable="false" />
-          <Property Name="IdProvider" Type="Int32" Nullable="false" />
-          <Property Name="CountSupply" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Provider" Relationship="Self.FK_SupplyMaterial_Provider" FromRole="SupplyMaterial" ToRole="Provider" />
-          <NavigationProperty Name="RawMaterial" Relationship="Self.FK_SupplyMaterial_RawMaterial" FromRole="SupplyMaterial" ToRole="RawMaterial" />
+          <Property Name="IdShedule" Type="Int32" Nullable="false" />
+          <Property Name="IdTicket" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cinema" Relationship="Self.FK_Cinema_ScheduleOfFilms" FromRole="ScheduleOfFilms" ToRole="Cinema" />
+          <NavigationProperty Name="Tickets" Relationship="Self.FK_ScheduleOfFilms_Tickets1" FromRole="ScheduleOfFilms" ToRole="Tickets" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -513,163 +592,233 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <EntityType Name="TypeClient">
+        <EntityType Name="Tickets">
           <Key>
-            <PropertyRef Name="IdTypeClient" />
+            <PropertyRef Name="IdTicket" />
           </Key>
-          <Property Name="IdTypeClient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NameTypeClient" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Client" Relationship="Self.FK_Client_TypeClient" FromRole="TypeClient" ToRole="Client" />
-        </EntityType>
-        <EntityType Name="TypeRawMaterial">
-          <Key>
-            <PropertyRef Name="IdTypeRawMaterial" />
-          </Key>
-          <Property Name="IdTypeRawMaterial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NameTypeRawMaterial" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="RawMaterial" Relationship="Self.FK_RawMaterial_TypeRawMaterial" FromRole="TypeRawMaterial" ToRole="RawMaterial" />
+          <Property Name="IdTicket" Type="Int32" Nullable="false" />
+          <Property Name="IdFilm" Type="Int32" Nullable="false" />
+          <Property Name="StartingDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdHall" Type="Int32" Nullable="false" />
+          <Property Name="Cost" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="SellingDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RowNumber" Type="Int32" Nullable="false" />
+          <Property Name="PlaceNumber" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Films" Relationship="Self.FK_Tickets_Films" FromRole="Tickets" ToRole="Films" />
+          <NavigationProperty Name="Halls" Relationship="Self.FK_Tickets_Halls" FromRole="Tickets" ToRole="Halls" />
+          <NavigationProperty Name="ScheduleOfFilms" Relationship="Self.FK_ScheduleOfFilms_Tickets1" FromRole="Tickets" ToRole="ScheduleOfFilms" />
         </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="IdUser" />
           </Key>
           <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LoginUser" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PasswordUser" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IdRole" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
-          <NavigationProperty Name="Staff" Relationship="Self.FK_Staff_User" FromRole="User" ToRole="Staff" />
+          <Property Name="LoginUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_UserTable_RoleTable" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="WorkerInfo" Relationship="Self.FK_WorkerInfo_User1" FromRole="User" ToRole="WorkerInfo" />
         </EntityType>
-        <EntityType Name="Workshop">
+        <EntityType Name="WorkerAdress">
           <Key>
-            <PropertyRef Name="IdWorkShop" />
+            <PropertyRef Name="IdAdress" />
           </Key>
-          <Property Name="IdWorkShop" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="WorkShopName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="WorkShopNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_Product_Workshop" FromRole="Workshop" ToRole="Product" />
+          <Property Name="IdAdress" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdRegion" Type="Int32" Nullable="false" />
+          <Property Name="IdCity" Type="Int32" Nullable="false" />
+          <Property Name="IdStreet" Type="Int32" Nullable="false" />
+          <Property Name="HomeNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AppartmentNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CityWorker" Relationship="Self.FK_CityWorkerTable_AdressOfLivingTable" FromRole="WorkerAdress" ToRole="CityWorker" />
+          <NavigationProperty Name="WorkerInfo" Relationship="Self.FK_InfoAboutTable_AdressOfLivingTable" FromRole="WorkerAdress" ToRole="WorkerInfo" />
+          <NavigationProperty Name="RegionWorker" Relationship="Self.FK_RegionWorkerTable_AdressOfLivingTable" FromRole="WorkerAdress" ToRole="RegionWorker" />
+          <NavigationProperty Name="StreetWorker" Relationship="Self.FK_StreetWorkerTable_AdressOfLivingTable" FromRole="WorkerAdress" ToRole="StreetWorker" />
         </EntityType>
-        <Association Name="FK_Client_TypeClient">
-          <End Role="TypeClient" Type="Self.TypeClient" Multiplicity="1" />
-          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+        <EntityType Name="WorkerInfo">
+          <Key>
+            <PropertyRef Name="IdInfoAbout" />
+          </Key>
+          <Property Name="IdInfoAbout" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdAdressOfLiving" Type="Int32" Nullable="false" />
+          <Property Name="Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Education" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WorkExpirience" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdCinema" Type="Int32" Nullable="false" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="WorkerPhoto" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <NavigationProperty Name="Cinema" Relationship="Self.FK_WorkerInfo_Cinema" FromRole="WorkerInfo" ToRole="Cinema" />
+          <NavigationProperty Name="User" Relationship="Self.FK_WorkerInfo_User1" FromRole="WorkerInfo" ToRole="User" />
+          <NavigationProperty Name="WorkerAdress" Relationship="Self.FK_InfoAboutTable_AdressOfLivingTable" FromRole="WorkerInfo" ToRole="WorkerAdress" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="IdCity" />
+            <PropertyRef Name="NameCity" />
+          </Key>
+          <Property Name="IdCity" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameCity" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CinemaAdress" Relationship="Self.FK_City_CinemaAdress" FromRole="City" ToRole="CinemaAdress" />
+        </EntityType>
+        <EntityType Name="CityWorker">
+          <Key>
+            <PropertyRef Name="IdCity" />
+            <PropertyRef Name="NameCity" />
+          </Key>
+          <Property Name="IdCity" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="WorkerAdress" Relationship="Self.FK_CityWorkerTable_AdressOfLivingTable" FromRole="CityWorker" ToRole="WorkerAdress" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="IdCountry" />
+            <PropertyRef Name="NameCountry" />
+          </Key>
+          <Property Name="IdCountry" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameCountry" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CinemaAdress" Relationship="Self.FK_Country_CinemaAdress" FromRole="Country" ToRole="CinemaAdress" />
+        </EntityType>
+        <EntityType Name="RegionWorker">
+          <Key>
+            <PropertyRef Name="IdRegion" />
+            <PropertyRef Name="NameRegion" />
+          </Key>
+          <Property Name="IdRegion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameRegion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="WorkerAdress" Relationship="Self.FK_RegionWorkerTable_AdressOfLivingTable" FromRole="RegionWorker" ToRole="WorkerAdress" />
+        </EntityType>
+        <EntityType Name="Street">
+          <Key>
+            <PropertyRef Name="IdStreet" />
+            <PropertyRef Name="StreetName" />
+          </Key>
+          <Property Name="IdStreet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StreetName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CinemaAdress" Relationship="Self.FK_Street_CinemaAdress" FromRole="Street" ToRole="CinemaAdress" />
+        </EntityType>
+        <EntityType Name="StreetWorker">
+          <Key>
+            <PropertyRef Name="IdStreet" />
+            <PropertyRef Name="NameStreet" />
+          </Key>
+          <Property Name="IdStreet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameStreet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="WorkerAdress" Relationship="Self.FK_StreetWorkerTable_AdressOfLivingTable" FromRole="StreetWorker" ToRole="WorkerAdress" />
+        </EntityType>
+        <Association Name="FK_Cinema_CinemaAdress">
+          <End Role="CinemaAdress" Type="Self.CinemaAdress" Multiplicity="1" />
+          <End Role="Cinema" Type="Self.Cinema" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TypeClient">
-              <PropertyRef Name="IdTypeClient" />
+            <Principal Role="CinemaAdress">
+              <PropertyRef Name="IdCinemaAdress" />
             </Principal>
-            <Dependent Role="Client">
-              <PropertyRef Name="IdTypeChat" />
+            <Dependent Role="Cinema">
+              <PropertyRef Name="IdCinemaAdress" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_DetailsAndMaterial_Details">
-          <End Role="Details" Type="Self.Details" Multiplicity="1" />
-          <End Role="DetailsAndMaterial" Type="Self.DetailsAndMaterial" Multiplicity="*" />
+        <Association Name="FK_Cinema_ScheduleOfFilms">
+          <End Role="ScheduleOfFilms" Type="Self.ScheduleOfFilms" Multiplicity="1" />
+          <End Role="Cinema" Type="Self.Cinema" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Details">
-              <PropertyRef Name="IdDetail" />
+            <Principal Role="ScheduleOfFilms">
+              <PropertyRef Name="IdShedule" />
             </Principal>
-            <Dependent Role="DetailsAndMaterial">
-              <PropertyRef Name="IdDetail" />
+            <Dependent Role="Cinema">
+              <PropertyRef Name="IdShedule" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_DetailsAndMaterial_RawMaterial">
-          <End Role="RawMaterial" Type="Self.RawMaterial" Multiplicity="1" />
-          <End Role="DetailsAndMaterial" Type="Self.DetailsAndMaterial" Multiplicity="*" />
+        <Association Name="FK_WorkerInfo_Cinema">
+          <End Role="Cinema" Type="Self.Cinema" Multiplicity="1" />
+          <End Role="WorkerInfo" Type="Self.WorkerInfo" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="RawMaterial">
-              <PropertyRef Name="IdRawMaterial" />
+            <Principal Role="Cinema">
+              <PropertyRef Name="IdCinema" />
             </Principal>
-            <Dependent Role="DetailsAndMaterial">
-              <PropertyRef Name="IdRawMaterial" />
+            <Dependent Role="WorkerInfo">
+              <PropertyRef Name="IdCinema" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProductAndDetails_DetailsAndMaterial">
-          <End Role="DetailsAndMaterial" Type="Self.DetailsAndMaterial" Multiplicity="1" />
-          <End Role="ProductAndDetails" Type="Self.ProductAndDetails" Multiplicity="*" />
+        <Association Name="FK_City_CinemaAdress">
+          <End Role="CinemaAdress" Type="Self.CinemaAdress" Multiplicity="1" />
+          <End Role="City" Type="Self.City" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="DetailsAndMaterial">
-              <PropertyRef Name="IdDetailsAndMaterial" />
+            <Principal Role="CinemaAdress">
+              <PropertyRef Name="IdCinemaAdress" />
             </Principal>
-            <Dependent Role="ProductAndDetails">
-              <PropertyRef Name="IdDetailsAndRawMaterial" />
+            <Dependent Role="City">
+              <PropertyRef Name="IdCity" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order_StatusOrder">
-          <End Role="StatusOrder" Type="Self.StatusOrder" Multiplicity="1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+        <Association Name="FK_Country_CinemaAdress">
+          <End Role="CinemaAdress" Type="Self.CinemaAdress" Multiplicity="1" />
+          <End Role="Country" Type="Self.Country" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="StatusOrder">
-              <PropertyRef Name="IdStatusOrder" />
+            <Principal Role="CinemaAdress">
+              <PropertyRef Name="IdCinemaAdress" />
             </Principal>
-            <Dependent Role="Order">
-              <PropertyRef Name="IdStatusOrder" />
+            <Dependent Role="Country">
+              <PropertyRef Name="IdCountry" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Product_Workshop">
-          <End Role="Workshop" Type="Self.Workshop" Multiplicity="1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+        <Association Name="FK_Street_CinemaAdress">
+          <End Role="CinemaAdress" Type="Self.CinemaAdress" Multiplicity="1" />
+          <End Role="Street" Type="Self.Street" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Workshop">
-              <PropertyRef Name="IdWorkShop" />
+            <Principal Role="CinemaAdress">
+              <PropertyRef Name="IdCinemaAdress" />
             </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="IdWorkshop" />
+            <Dependent Role="Street">
+              <PropertyRef Name="IdStreet" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProductAndDetails_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
-          <End Role="ProductAndDetails" Type="Self.ProductAndDetails" Multiplicity="*" />
+        <Association Name="FK_Tickets_Films">
+          <End Role="Films" Type="Self.Films" Multiplicity="1" />
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="IdProduct" />
+            <Principal Role="Films">
+              <PropertyRef Name="IdFilm" />
             </Principal>
-            <Dependent Role="ProductAndDetails">
-              <PropertyRef Name="IdProduct" />
+            <Dependent Role="Tickets">
+              <PropertyRef Name="IdFilm" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SupplyMaterial_Provider">
-          <End Role="Provider" Type="Self.Provider" Multiplicity="1" />
-          <End Role="SupplyMaterial" Type="Self.SupplyMaterial" Multiplicity="*" />
+        <Association Name="FK_Halls_PlaceStatus">
+          <End Role="PlaceStatus" Type="Self.PlaceStatus" Multiplicity="1" />
+          <End Role="Halls" Type="Self.Halls" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Provider">
-              <PropertyRef Name="IdProvider" />
+            <Principal Role="PlaceStatus">
+              <PropertyRef Name="IdPlaceStatus" />
             </Principal>
-            <Dependent Role="SupplyMaterial">
-              <PropertyRef Name="IdProvider" />
+            <Dependent Role="Halls">
+              <PropertyRef Name="IdPlaceStatus" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_RawMaterial_TypeRawMaterial">
-          <End Role="TypeRawMaterial" Type="Self.TypeRawMaterial" Multiplicity="1" />
-          <End Role="RawMaterial" Type="Self.RawMaterial" Multiplicity="*" />
+        <Association Name="FK_Tickets_Halls">
+          <End Role="Halls" Type="Self.Halls" Multiplicity="1" />
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TypeRawMaterial">
-              <PropertyRef Name="IdTypeRawMaterial" />
+            <Principal Role="Halls">
+              <PropertyRef Name="IdHall" />
             </Principal>
-            <Dependent Role="RawMaterial">
-              <PropertyRef Name="IdTypeRawMaterial" />
+            <Dependent Role="Tickets">
+              <PropertyRef Name="IdHall" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SupplyMaterial_RawMaterial">
-          <End Role="RawMaterial" Type="Self.RawMaterial" Multiplicity="1" />
-          <End Role="SupplyMaterial" Type="Self.SupplyMaterial" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="RawMaterial">
-              <PropertyRef Name="IdRawMaterial" />
-            </Principal>
-            <Dependent Role="SupplyMaterial">
-              <PropertyRef Name="IdRawMaterial" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_User_Role">
+        <Association Name="FK_UserTable_RoleTable">
           <End Role="Role" Type="Self.Role" Multiplicity="1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
           <ReferentialConstraint>
@@ -681,83 +830,160 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Staff_User">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+        <Association Name="FK_ScheduleOfFilms_Tickets1">
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="1" />
+          <End Role="ScheduleOfFilms" Type="Self.ScheduleOfFilms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tickets">
+              <PropertyRef Name="IdTicket" />
+            </Principal>
+            <Dependent Role="ScheduleOfFilms">
+              <PropertyRef Name="IdTicket" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkerInfo_User1">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="WorkerInfo" Type="Self.WorkerInfo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="IdUser" />
             </Principal>
-            <Dependent Role="Staff">
+            <Dependent Role="WorkerInfo">
               <PropertyRef Name="IdUser" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_CityWorkerTable_AdressOfLivingTable">
+          <End Role="WorkerAdress" Type="Self.WorkerAdress" Multiplicity="1" />
+          <End Role="CityWorker" Type="Self.CityWorker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkerAdress">
+              <PropertyRef Name="IdAdress" />
+            </Principal>
+            <Dependent Role="CityWorker">
+              <PropertyRef Name="IdCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InfoAboutTable_AdressOfLivingTable">
+          <End Role="WorkerAdress" Type="Self.WorkerAdress" Multiplicity="1" />
+          <End Role="WorkerInfo" Type="Self.WorkerInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkerAdress">
+              <PropertyRef Name="IdAdress" />
+            </Principal>
+            <Dependent Role="WorkerInfo">
+              <PropertyRef Name="IdAdressOfLiving" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegionWorkerTable_AdressOfLivingTable">
+          <End Role="WorkerAdress" Type="Self.WorkerAdress" Multiplicity="1" />
+          <End Role="RegionWorker" Type="Self.RegionWorker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkerAdress">
+              <PropertyRef Name="IdAdress" />
+            </Principal>
+            <Dependent Role="RegionWorker">
+              <PropertyRef Name="IdRegion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StreetWorkerTable_AdressOfLivingTable">
+          <End Role="WorkerAdress" Type="Self.WorkerAdress" Multiplicity="1" />
+          <End Role="StreetWorker" Type="Self.StreetWorker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkerAdress">
+              <PropertyRef Name="IdAdress" />
+            </Principal>
+            <Dependent Role="StreetWorker">
+              <PropertyRef Name="IdStreet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Client" EntityType="Self.Client" />
-          <EntitySet Name="Details" EntityType="Self.Details" />
-          <EntitySet Name="DetailsAndMaterial" EntityType="Self.DetailsAndMaterial" />
-          <EntitySet Name="Order" EntityType="Self.Order" />
-          <EntitySet Name="Product" EntityType="Self.Product" />
-          <EntitySet Name="ProductAndDetails" EntityType="Self.ProductAndDetails" />
-          <EntitySet Name="Provider" EntityType="Self.Provider" />
-          <EntitySet Name="RawMaterial" EntityType="Self.RawMaterial" />
+          <EntitySet Name="Cinema" EntityType="Self.Cinema" />
+          <EntitySet Name="CinemaAdress" EntityType="Self.CinemaAdress" />
+          <EntitySet Name="Films" EntityType="Self.Films" />
+          <EntitySet Name="Halls" EntityType="Self.Halls" />
+          <EntitySet Name="PlaceStatus" EntityType="Self.PlaceStatus" />
           <EntitySet Name="Role" EntityType="Self.Role" />
-          <EntitySet Name="Staff" EntityType="Self.Staff" />
-          <EntitySet Name="StatusOrder" EntityType="Self.StatusOrder" />
-          <EntitySet Name="SupplyMaterial" EntityType="Self.SupplyMaterial" />
+          <EntitySet Name="ScheduleOfFilms" EntityType="Self.ScheduleOfFilms" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <EntitySet Name="TypeClient" EntityType="Self.TypeClient" />
-          <EntitySet Name="TypeRawMaterial" EntityType="Self.TypeRawMaterial" />
+          <EntitySet Name="Tickets" EntityType="Self.Tickets" />
           <EntitySet Name="User" EntityType="Self.User" />
-          <EntitySet Name="Workshop" EntityType="Self.Workshop" />
-          <AssociationSet Name="FK_Client_TypeClient" Association="Self.FK_Client_TypeClient">
-            <End Role="TypeClient" EntitySet="TypeClient" />
-            <End Role="Client" EntitySet="Client" />
+          <EntitySet Name="WorkerAdress" EntityType="Self.WorkerAdress" />
+          <EntitySet Name="WorkerInfo" EntityType="Self.WorkerInfo" />
+          <EntitySet Name="City" EntityType="Self.City" />
+          <EntitySet Name="CityWorker" EntityType="Self.CityWorker" />
+          <EntitySet Name="Country" EntityType="Self.Country" />
+          <EntitySet Name="RegionWorker" EntityType="Self.RegionWorker" />
+          <EntitySet Name="Street" EntityType="Self.Street" />
+          <EntitySet Name="StreetWorker" EntityType="Self.StreetWorker" />
+          <AssociationSet Name="FK_Cinema_CinemaAdress" Association="Self.FK_Cinema_CinemaAdress">
+            <End Role="CinemaAdress" EntitySet="CinemaAdress" />
+            <End Role="Cinema" EntitySet="Cinema" />
           </AssociationSet>
-          <AssociationSet Name="FK_DetailsAndMaterial_Details" Association="Self.FK_DetailsAndMaterial_Details">
-            <End Role="Details" EntitySet="Details" />
-            <End Role="DetailsAndMaterial" EntitySet="DetailsAndMaterial" />
+          <AssociationSet Name="FK_Cinema_ScheduleOfFilms" Association="Self.FK_Cinema_ScheduleOfFilms">
+            <End Role="ScheduleOfFilms" EntitySet="ScheduleOfFilms" />
+            <End Role="Cinema" EntitySet="Cinema" />
           </AssociationSet>
-          <AssociationSet Name="FK_DetailsAndMaterial_RawMaterial" Association="Self.FK_DetailsAndMaterial_RawMaterial">
-            <End Role="RawMaterial" EntitySet="RawMaterial" />
-            <End Role="DetailsAndMaterial" EntitySet="DetailsAndMaterial" />
+          <AssociationSet Name="FK_WorkerInfo_Cinema" Association="Self.FK_WorkerInfo_Cinema">
+            <End Role="Cinema" EntitySet="Cinema" />
+            <End Role="WorkerInfo" EntitySet="WorkerInfo" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProductAndDetails_DetailsAndMaterial" Association="Self.FK_ProductAndDetails_DetailsAndMaterial">
-            <End Role="DetailsAndMaterial" EntitySet="DetailsAndMaterial" />
-            <End Role="ProductAndDetails" EntitySet="ProductAndDetails" />
+          <AssociationSet Name="FK_City_CinemaAdress" Association="Self.FK_City_CinemaAdress">
+            <End Role="CinemaAdress" EntitySet="CinemaAdress" />
+            <End Role="City" EntitySet="City" />
           </AssociationSet>
-          <AssociationSet Name="FK_Order_StatusOrder" Association="Self.FK_Order_StatusOrder">
-            <End Role="StatusOrder" EntitySet="StatusOrder" />
-            <End Role="Order" EntitySet="Order" />
+          <AssociationSet Name="FK_Country_CinemaAdress" Association="Self.FK_Country_CinemaAdress">
+            <End Role="CinemaAdress" EntitySet="CinemaAdress" />
+            <End Role="Country" EntitySet="Country" />
           </AssociationSet>
-          <AssociationSet Name="FK_Product_Workshop" Association="Self.FK_Product_Workshop">
-            <End Role="Workshop" EntitySet="Workshop" />
-            <End Role="Product" EntitySet="Product" />
+          <AssociationSet Name="FK_Street_CinemaAdress" Association="Self.FK_Street_CinemaAdress">
+            <End Role="CinemaAdress" EntitySet="CinemaAdress" />
+            <End Role="Street" EntitySet="Street" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProductAndDetails_Product" Association="Self.FK_ProductAndDetails_Product">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="ProductAndDetails" EntitySet="ProductAndDetails" />
+          <AssociationSet Name="FK_Tickets_Films" Association="Self.FK_Tickets_Films">
+            <End Role="Films" EntitySet="Films" />
+            <End Role="Tickets" EntitySet="Tickets" />
           </AssociationSet>
-          <AssociationSet Name="FK_SupplyMaterial_Provider" Association="Self.FK_SupplyMaterial_Provider">
-            <End Role="Provider" EntitySet="Provider" />
-            <End Role="SupplyMaterial" EntitySet="SupplyMaterial" />
+          <AssociationSet Name="FK_Halls_PlaceStatus" Association="Self.FK_Halls_PlaceStatus">
+            <End Role="PlaceStatus" EntitySet="PlaceStatus" />
+            <End Role="Halls" EntitySet="Halls" />
           </AssociationSet>
-          <AssociationSet Name="FK_RawMaterial_TypeRawMaterial" Association="Self.FK_RawMaterial_TypeRawMaterial">
-            <End Role="TypeRawMaterial" EntitySet="TypeRawMaterial" />
-            <End Role="RawMaterial" EntitySet="RawMaterial" />
+          <AssociationSet Name="FK_Tickets_Halls" Association="Self.FK_Tickets_Halls">
+            <End Role="Halls" EntitySet="Halls" />
+            <End Role="Tickets" EntitySet="Tickets" />
           </AssociationSet>
-          <AssociationSet Name="FK_SupplyMaterial_RawMaterial" Association="Self.FK_SupplyMaterial_RawMaterial">
-            <End Role="RawMaterial" EntitySet="RawMaterial" />
-            <End Role="SupplyMaterial" EntitySet="SupplyMaterial" />
-          </AssociationSet>
-          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+          <AssociationSet Name="FK_UserTable_RoleTable" Association="Self.FK_UserTable_RoleTable">
             <End Role="Role" EntitySet="Role" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
-          <AssociationSet Name="FK_Staff_User" Association="Self.FK_Staff_User">
+          <AssociationSet Name="FK_ScheduleOfFilms_Tickets1" Association="Self.FK_ScheduleOfFilms_Tickets1">
+            <End Role="Tickets" EntitySet="Tickets" />
+            <End Role="ScheduleOfFilms" EntitySet="ScheduleOfFilms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkerInfo_User1" Association="Self.FK_WorkerInfo_User1">
             <End Role="User" EntitySet="User" />
-            <End Role="Staff" EntitySet="Staff" />
+            <End Role="WorkerInfo" EntitySet="WorkerInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CityWorkerTable_AdressOfLivingTable" Association="Self.FK_CityWorkerTable_AdressOfLivingTable">
+            <End Role="WorkerAdress" EntitySet="WorkerAdress" />
+            <End Role="CityWorker" EntitySet="CityWorker" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InfoAboutTable_AdressOfLivingTable" Association="Self.FK_InfoAboutTable_AdressOfLivingTable">
+            <End Role="WorkerAdress" EntitySet="WorkerAdress" />
+            <End Role="WorkerInfo" EntitySet="WorkerInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegionWorkerTable_AdressOfLivingTable" Association="Self.FK_RegionWorkerTable_AdressOfLivingTable">
+            <End Role="WorkerAdress" EntitySet="WorkerAdress" />
+            <End Role="RegionWorker" EntitySet="RegionWorker" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StreetWorkerTable_AdressOfLivingTable" Association="Self.FK_StreetWorkerTable_AdressOfLivingTable">
+            <End Role="WorkerAdress" EntitySet="WorkerAdress" />
+            <End Role="StreetWorker" EntitySet="StreetWorker" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -766,87 +992,59 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище DBModelContainer" CdmEntityContainer="DBEntities">
-          <EntitySetMapping Name="Client">
-            <EntityTypeMapping TypeName="DBModel.Client">
-              <MappingFragment StoreEntitySet="Client">
-                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
-                <ScalarProperty Name="LastNameClient" ColumnName="LastNameClient" />
-                <ScalarProperty Name="FirstNameClient" ColumnName="FirstNameClient" />
-                <ScalarProperty Name="MiddleNameClient" ColumnName="MiddleNameClient" />
-                <ScalarProperty Name="NumberPhoneClient" ColumnName="NumberPhoneClient" />
-                <ScalarProperty Name="IdTypeChat" ColumnName="IdTypeChat" />
+          <EntitySetMapping Name="Cinema">
+            <EntityTypeMapping TypeName="DBModel.Cinema">
+              <MappingFragment StoreEntitySet="Cinema">
+                <ScalarProperty Name="IdCinema" ColumnName="IdCinema" />
+                <ScalarProperty Name="CinemaName" ColumnName="CinemaName" />
+                <ScalarProperty Name="IdCinemaAdress" ColumnName="IdCinemaAdress" />
+                <ScalarProperty Name="NumberOfHalls" ColumnName="NumberOfHalls" />
+                <ScalarProperty Name="OpeningTime" ColumnName="OpeningTime" />
+                <ScalarProperty Name="ClosingTime" ColumnName="ClosingTime" />
+                <ScalarProperty Name="PhoneOfCinema" ColumnName="PhoneOfCinema" />
+                <ScalarProperty Name="IdShedule" ColumnName="IdShedule" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Details">
-            <EntityTypeMapping TypeName="DBModel.Details">
-              <MappingFragment StoreEntitySet="Details">
-                <ScalarProperty Name="IdDetail" ColumnName="IdDetail" />
-                <ScalarProperty Name="DetailName" ColumnName="DetailName" />
+          <EntitySetMapping Name="CinemaAdress">
+            <EntityTypeMapping TypeName="DBModel.CinemaAdress">
+              <MappingFragment StoreEntitySet="CinemaAdress">
+                <ScalarProperty Name="IdCinemaAdress" ColumnName="IdCinemaAdress" />
+                <ScalarProperty Name="IdCountry" ColumnName="IdCountry" />
+                <ScalarProperty Name="IdCity" ColumnName="IdCity" />
+                <ScalarProperty Name="IdStreet" ColumnName="IdStreet" />
+                <ScalarProperty Name="Build" ColumnName="Build" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="DetailsAndMaterial">
-            <EntityTypeMapping TypeName="DBModel.DetailsAndMaterial">
-              <MappingFragment StoreEntitySet="DetailsAndMaterial">
-                <ScalarProperty Name="IdDetailsAndMaterial" ColumnName="IdDetailsAndMaterial" />
-                <ScalarProperty Name="IdRawMaterial" ColumnName="IdRawMaterial" />
-                <ScalarProperty Name="IdDetail" ColumnName="IdDetail" />
+          <EntitySetMapping Name="Films">
+            <EntityTypeMapping TypeName="DBModel.Films">
+              <MappingFragment StoreEntitySet="Films">
+                <ScalarProperty Name="IdFilm" ColumnName="IdFilm" />
+                <ScalarProperty Name="FilmName" ColumnName="FilmName" />
+                <ScalarProperty Name="Genre" ColumnName="Genre" />
+                <ScalarProperty Name="FilmDirector" ColumnName="FilmDirector" />
+                <ScalarProperty Name="YearOfIssue" ColumnName="YearOfIssue" />
+                <ScalarProperty Name="AgeLimit" ColumnName="AgeLimit" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Order">
-            <EntityTypeMapping TypeName="DBModel.Order">
-              <MappingFragment StoreEntitySet="Order">
-                <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
-                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
-                <ScalarProperty Name="NumberOrder" ColumnName="NumberOrder" />
-                <ScalarProperty Name="DateOrder" ColumnName="DateOrder" />
-                <ScalarProperty Name="IdStatusOrder" ColumnName="IdStatusOrder" />
-                <ScalarProperty Name="PriceOrder" ColumnName="PriceOrder" />
-                <ScalarProperty Name="IdStaff" ColumnName="IdStaff" />
-                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+          <EntitySetMapping Name="Halls">
+            <EntityTypeMapping TypeName="DBModel.Halls">
+              <MappingFragment StoreEntitySet="Halls">
+                <ScalarProperty Name="IdHall" ColumnName="IdHall" />
+                <ScalarProperty Name="HallName" ColumnName="HallName" />
+                <ScalarProperty Name="IdPlaceStatus" ColumnName="IdPlaceStatus" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Product">
-            <EntityTypeMapping TypeName="DBModel.Product">
-              <MappingFragment StoreEntitySet="Product">
-                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
-                <ScalarProperty Name="NameProduct" ColumnName="NameProduct" />
-                <ScalarProperty Name="IssueNumberProduct" ColumnName="IssueNumberProduct" />
-                <ScalarProperty Name="CostProduct" ColumnName="CostProduct" />
-                <ScalarProperty Name="GuaranteeProduct" ColumnName="GuaranteeProduct" />
-                <ScalarProperty Name="QualityProduct" ColumnName="QualityProduct" />
-                <ScalarProperty Name="IdWorkshop" ColumnName="IdWorkshop" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ProductAndDetails">
-            <EntityTypeMapping TypeName="DBModel.ProductAndDetails">
-              <MappingFragment StoreEntitySet="ProductAndDetails">
-                <ScalarProperty Name="IdProductAndDetails" ColumnName="IdProductAndDetails" />
-                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
-                <ScalarProperty Name="IdDetailsAndRawMaterial" ColumnName="IdDetailsAndRawMaterial" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Provider">
-            <EntityTypeMapping TypeName="DBModel.Provider">
-              <MappingFragment StoreEntitySet="Provider">
-                <ScalarProperty Name="IdProvider" ColumnName="IdProvider" />
-                <ScalarProperty Name="ProviderName" ColumnName="ProviderName" />
-                <ScalarProperty Name="Number" ColumnName="Number" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RawMaterial">
-            <EntityTypeMapping TypeName="DBModel.RawMaterial">
-              <MappingFragment StoreEntitySet="RawMaterial">
-                <ScalarProperty Name="IdRawMaterial" ColumnName="IdRawMaterial" />
-                <ScalarProperty Name="RawName" ColumnName="RawName" />
-                <ScalarProperty Name="IdTypeRawMaterial" ColumnName="IdTypeRawMaterial" />
-                <ScalarProperty Name="CostRawMaterial" ColumnName="CostRawMaterial" />
+          <EntitySetMapping Name="PlaceStatus">
+            <EntityTypeMapping TypeName="DBModel.PlaceStatus">
+              <MappingFragment StoreEntitySet="PlaceStatus">
+                <ScalarProperty Name="IdPlaceStatus" ColumnName="IdPlaceStatus" />
+                <ScalarProperty Name="PlaceStatus1" ColumnName="PlaceStatus" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -858,34 +1056,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Staff">
-            <EntityTypeMapping TypeName="DBModel.Staff">
-              <MappingFragment StoreEntitySet="Staff">
-                <ScalarProperty Name="IdStaff" ColumnName="IdStaff" />
-                <ScalarProperty Name="LastNameStaff" ColumnName="LastNameStaff" />
-                <ScalarProperty Name="FirstNameStaff" ColumnName="FirstNameStaff" />
-                <ScalarProperty Name="MiddleNameStaff" ColumnName="MiddleNameStaff" />
-                <ScalarProperty Name="NumberPhone" ColumnName="NumberPhone" />
-                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
-                <ScalarProperty Name="PhotoStaff" ColumnName="PhotoStaff" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="StatusOrder">
-            <EntityTypeMapping TypeName="DBModel.StatusOrder">
-              <MappingFragment StoreEntitySet="StatusOrder">
-                <ScalarProperty Name="IdStatusOrder" ColumnName="IdStatusOrder" />
-                <ScalarProperty Name="NameStatusOrder" ColumnName="NameStatusOrder" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SupplyMaterial">
-            <EntityTypeMapping TypeName="DBModel.SupplyMaterial">
-              <MappingFragment StoreEntitySet="SupplyMaterial">
-                <ScalarProperty Name="IdSupply" ColumnName="IdSupply" />
-                <ScalarProperty Name="IdRawMaterial" ColumnName="IdRawMaterial" />
-                <ScalarProperty Name="IdProvider" ColumnName="IdProvider" />
-                <ScalarProperty Name="CountSupply" ColumnName="CountSupply" />
+          <EntitySetMapping Name="ScheduleOfFilms">
+            <EntityTypeMapping TypeName="DBModel.ScheduleOfFilms">
+              <MappingFragment StoreEntitySet="ScheduleOfFilms">
+                <ScalarProperty Name="IdShedule" ColumnName="IdShedule" />
+                <ScalarProperty Name="IdTicket" ColumnName="IdTicket" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -900,19 +1075,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TypeClient">
-            <EntityTypeMapping TypeName="DBModel.TypeClient">
-              <MappingFragment StoreEntitySet="TypeClient">
-                <ScalarProperty Name="IdTypeClient" ColumnName="IdTypeClient" />
-                <ScalarProperty Name="NameTypeClient" ColumnName="NameTypeClient" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TypeRawMaterial">
-            <EntityTypeMapping TypeName="DBModel.TypeRawMaterial">
-              <MappingFragment StoreEntitySet="TypeRawMaterial">
-                <ScalarProperty Name="IdTypeRawMaterial" ColumnName="IdTypeRawMaterial" />
-                <ScalarProperty Name="NameTypeRawMaterial" ColumnName="NameTypeRawMaterial" />
+          <EntitySetMapping Name="Tickets">
+            <EntityTypeMapping TypeName="DBModel.Tickets">
+              <MappingFragment StoreEntitySet="Tickets">
+                <ScalarProperty Name="IdTicket" ColumnName="IdTicket" />
+                <ScalarProperty Name="IdFilm" ColumnName="IdFilm" />
+                <ScalarProperty Name="StartingDate" ColumnName="StartingDate" />
+                <ScalarProperty Name="IdHall" ColumnName="IdHall" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="SellingDate" ColumnName="SellingDate" />
+                <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
+                <ScalarProperty Name="PlaceNumber" ColumnName="PlaceNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -920,18 +1093,89 @@
             <EntityTypeMapping TypeName="DBModel.User">
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
                 <ScalarProperty Name="LoginUser" ColumnName="LoginUser" />
                 <ScalarProperty Name="PasswordUser" ColumnName="PasswordUser" />
-                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Workshop">
-            <EntityTypeMapping TypeName="DBModel.Workshop">
-              <MappingFragment StoreEntitySet="Workshop">
-                <ScalarProperty Name="IdWorkShop" ColumnName="IdWorkShop" />
-                <ScalarProperty Name="WorkShopName" ColumnName="WorkShopName" />
-                <ScalarProperty Name="WorkShopNumber" ColumnName="WorkShopNumber" />
+          <EntitySetMapping Name="WorkerAdress">
+            <EntityTypeMapping TypeName="DBModel.WorkerAdress">
+              <MappingFragment StoreEntitySet="WorkerAdress">
+                <ScalarProperty Name="IdAdress" ColumnName="IdAdress" />
+                <ScalarProperty Name="IdRegion" ColumnName="IdRegion" />
+                <ScalarProperty Name="IdCity" ColumnName="IdCity" />
+                <ScalarProperty Name="IdStreet" ColumnName="IdStreet" />
+                <ScalarProperty Name="HomeNumber" ColumnName="HomeNumber" />
+                <ScalarProperty Name="AppartmentNumber" ColumnName="AppartmentNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkerInfo">
+            <EntityTypeMapping TypeName="DBModel.WorkerInfo">
+              <MappingFragment StoreEntitySet="WorkerInfo">
+                <ScalarProperty Name="IdInfoAbout" ColumnName="IdInfoAbout" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="IdAdressOfLiving" ColumnName="IdAdressOfLiving" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Education" ColumnName="Education" />
+                <ScalarProperty Name="WorkExpirience" ColumnName="WorkExpirience" />
+                <ScalarProperty Name="IdCinema" ColumnName="IdCinema" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="WorkerPhoto" ColumnName="WorkerPhoto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="City">
+            <EntityTypeMapping TypeName="DBModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="IdCity" ColumnName="IdCity" />
+                <ScalarProperty Name="NameCity" ColumnName="NameCity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CityWorker">
+            <EntityTypeMapping TypeName="DBModel.CityWorker">
+              <MappingFragment StoreEntitySet="CityWorker">
+                <ScalarProperty Name="IdCity" ColumnName="IdCity" />
+                <ScalarProperty Name="NameCity" ColumnName="NameCity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Country">
+            <EntityTypeMapping TypeName="DBModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="IdCountry" ColumnName="IdCountry" />
+                <ScalarProperty Name="NameCountry" ColumnName="NameCountry" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegionWorker">
+            <EntityTypeMapping TypeName="DBModel.RegionWorker">
+              <MappingFragment StoreEntitySet="RegionWorker">
+                <ScalarProperty Name="IdRegion" ColumnName="IdRegion" />
+                <ScalarProperty Name="NameRegion" ColumnName="NameRegion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Street">
+            <EntityTypeMapping TypeName="DBModel.Street">
+              <MappingFragment StoreEntitySet="Street">
+                <ScalarProperty Name="IdStreet" ColumnName="IdStreet" />
+                <ScalarProperty Name="StreetName" ColumnName="StreetName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StreetWorker">
+            <EntityTypeMapping TypeName="DBModel.StreetWorker">
+              <MappingFragment StoreEntitySet="StreetWorker">
+                <ScalarProperty Name="IdStreet" ColumnName="IdStreet" />
+                <ScalarProperty Name="NameStreet" ColumnName="NameStreet" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -25,7 +25,7 @@ namespace RagimovApp.PageFolder.ManagerPageFolder
     /// </summary>
     public partial class AddEmployeePage : Page
     {
-        Staff staff = new Staff();
+        WorkerInfo WorkerInfo = new WorkerInfo();
         User user = new User();
         public AddEmployeePage()
         {
@@ -38,7 +38,7 @@ namespace RagimovApp.PageFolder.ManagerPageFolder
             try
             {
                 AddUser();
-                StaffAdd();
+                WorkerInfoAdd();
 
                 MBClass.MBInfo("Сотрудник добавлен");
             }
@@ -60,18 +60,18 @@ namespace RagimovApp.PageFolder.ManagerPageFolder
             DBEntities.GetContext().SaveChanges();
             user.IdUser = userAdd.IdUser;
         }
-        private void StaffAdd()
+        private void WorkerInfoAdd()
         {
-            var staffAdd = new Staff()
+            var WorkerInfoAdd = new WorkerInfo()
             {
-                LastNameStaff = LastNameTb.Text,
-                FirstNameStaff = FirstNameTb.Text,
-                MiddleNameStaff = MiddleNameTb.Text,
-                NumberPhone = NumberPhoneTb.Text,
+                LastName = LastNameTb.Text,
+                FirstName = FirstNameTb.Text,
+                MiddleName = MiddleNameTb.Text,
+                Number = NumberPhoneTb.Text,
                 IdUser = user.IdUser,
-                PhotoStaff = !string.IsNullOrEmpty(selectedFileName) ? ImageClass.ConvertImageToByteArray(selectedFileName): null
+                WorkerPhoto = !string.IsNullOrEmpty(selectedFileName) ? ImageClass.ConvertImageToByteArray(selectedFileName): null
             };
-            DBEntities.GetContext().Staff.Add(staffAdd);
+            DBEntities.GetContext().WorkerInfo.Add(WorkerInfoAdd);
             DBEntities.GetContext().SaveChanges();
         }
         string selectedFileName = "";
@@ -89,8 +89,8 @@ namespace RagimovApp.PageFolder.ManagerPageFolder
                 if (op.ShowDialog() == true)
                 {
                     selectedFileName = op.FileName;
-                    staff.PhotoStaff = ImageClass.ConvertImageToByteArray(selectedFileName);
-                    ImPhoto.Source = ImageClass.ConvertByteArrayToImage(staff.PhotoStaff);
+                    WorkerInfo.WorkerPhoto = ImageClass.ConvertImageToByteArray(selectedFileName);
+                    ImPhoto.Source = ImageClass.ConvertByteArrayToImage(WorkerInfo.WorkerPhoto);
                 }
             }
             catch (Exception ex)

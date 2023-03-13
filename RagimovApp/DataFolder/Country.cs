@@ -12,13 +12,11 @@ namespace RagimovApp.DataFolder
     using System;
     using System.Collections.Generic;
     
-    public partial class ProductAndDetails
+    public partial class Country
     {
-        public int IdProductAndDetails { get; set; }
-        public int IdProduct { get; set; }
-        public int IdDetailsAndRawMaterial { get; set; }
+        public int IdCountry { get; set; }
+        public string NameCountry { get; set; }
     
-        public virtual DetailsAndMaterial DetailsAndMaterial { get; set; }
-        public virtual Product Product { get; set; }
+        public virtual CinemaAdress CinemaAdress { get; set; }
     }
 }

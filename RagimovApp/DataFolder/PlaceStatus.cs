@@ -12,21 +12,18 @@ namespace RagimovApp.DataFolder
     using System;
     using System.Collections.Generic;
     
-    public partial class DetailsAndMaterial
+    public partial class PlaceStatus
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public DetailsAndMaterial()
+        public PlaceStatus()
         {
-            this.ProductAndDetails = new HashSet<ProductAndDetails>();
+            this.Halls = new HashSet<Halls>();
         }
     
-        public int IdDetailsAndMaterial { get; set; }
-        public int IdRawMaterial { get; set; }
-        public int IdDetail { get; set; }
+        public int IdPlaceStatus { get; set; }
+        public string PlaceStatus1 { get; set; }
     
-        public virtual Details Details { get; set; }
-        public virtual RawMaterial RawMaterial { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductAndDetails> ProductAndDetails { get; set; }
+        public virtual ICollection<Halls> Halls { get; set; }
     }
 }
