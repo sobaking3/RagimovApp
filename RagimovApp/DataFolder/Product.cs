@@ -17,6 +17,7 @@ namespace RagimovApp.DataFolder
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
+            this.Order = new HashSet<Order>();
             this.ProductAndDetails = new HashSet<ProductAndDetails>();
         }
     
@@ -28,6 +29,8 @@ namespace RagimovApp.DataFolder
         public int QualityProduct { get; set; }
         public int IdWorkshop { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Order { get; set; }
         public virtual Workshop Workshop { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductAndDetails> ProductAndDetails { get; set; }

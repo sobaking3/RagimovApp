@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RagimovApp.DataFolder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,8 @@ namespace RagimovApp.PageFolder.ManagerPageFolder
         public ListOrderPage()
         {
             InitializeComponent();
+            ListOrderLB.ItemsSource = DBEntities.GetContext()
+                .Order.ToList().OrderBy(s => s.NumberOrder);
         }
 
         private void SearchTb_TextChanged(object sender, TextChangedEventArgs e)

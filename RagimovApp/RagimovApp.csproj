@@ -168,8 +168,8 @@
     <Compile Include="WindowFolder\Authorization.xaml.cs">
       <DependentUpon>Authorization.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WindowFolder\ManagerWindowFolder\EmployeeList.xaml.cs">
-      <DependentUpon>EmployeeList.xaml</DependentUpon>
+    <Compile Include="WindowFolder\ManagerWindowFolder\ManagerMainWindow.xaml.cs">
+      <DependentUpon>ManagerMainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="WindowFolder\Registration.xaml.cs">
       <DependentUpon>Registration.xaml</DependentUpon>
@@ -251,7 +251,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WindowFolder\ManagerWindowFolder\EmployeeList.xaml">
+    <Page Include="WindowFolder\ManagerWindowFolder\ManagerMainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

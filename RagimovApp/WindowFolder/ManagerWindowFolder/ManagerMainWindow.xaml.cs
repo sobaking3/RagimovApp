@@ -20,9 +20,9 @@ namespace RagimovApp.WindowFolder.ManagerWindowFolder
     /// <summary>
     /// Логика взаимодействия для EmployeeList.xaml
     /// </summary>
-    public partial class EmployeeList : Window
+    public partial class ManagerMainWindow : Window
     {
-        public EmployeeList()
+        public ManagerMainWindow()
         {
             InitializeComponent();
             MainFrame.Navigate(new ListEmployeePage());

@@ -14,13 +14,21 @@ namespace RagimovApp.DataFolder
     
     public partial class Client
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Client()
+        {
+            this.Order = new HashSet<Order>();
+        }
+    
         public int IdClient { get; set; }
         public string LastNameClient { get; set; }
         public string FirstNameClient { get; set; }
         public string MiddleNameClient { get; set; }
         public string NumberPhoneClient { get; set; }
-        public int IdTypeChat { get; set; }
+        public int IdTypeClient { get; set; }
     
         public virtual TypeClient TypeClient { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Order { get; set; }
     }
 }

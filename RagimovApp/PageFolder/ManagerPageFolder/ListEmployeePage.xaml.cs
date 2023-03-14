@@ -92,8 +92,8 @@ namespace RagimovApp.PageFolder.ManagerPageFolder
             }
             else
             {
-                NavigationService.Navigate(
-                    new EditUserPage(ListEmployeeLB.SelectedItem as Staff));
+                //NavigationService.Navigate(
+                //    new EditUserPage(ListEmployeeLB.SelectedItem as Staff));
             }
         }
     }

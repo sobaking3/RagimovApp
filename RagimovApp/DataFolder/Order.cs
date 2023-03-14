@@ -20,9 +20,10 @@ namespace RagimovApp.DataFolder
         public System.DateTime DateOrder { get; set; }
         public int IdStatusOrder { get; set; }
         public decimal PriceOrder { get; set; }
-        public int IdStaff { get; set; }
         public int IdProduct { get; set; }
     
+        public virtual Client Client { get; set; }
+        public virtual Product Product { get; set; }
         public virtual StatusOrder StatusOrder { get; set; }
     }
 }

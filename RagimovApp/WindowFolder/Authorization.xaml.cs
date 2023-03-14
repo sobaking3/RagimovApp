@@ -65,7 +65,7 @@ namespace RagimovApp.WindowFolder
                                 break;
                             case 2:
                                 MBClass.MBInfo("Менеджер");
-                                new EmployeeList().ShowDialog();
+                                new ManagerMainWindow().ShowDialog();
                                 break;
                         }
                     }

@@ -14,7 +14,7 @@
           <Property Name="FirstNameClient" Type="nvarchar" MaxLength="70" Nullable="false" />
           <Property Name="MiddleNameClient" Type="nvarchar" MaxLength="70" />
           <Property Name="NumberPhoneClient" Type="nvarchar" MaxLength="17" Nullable="false" />
-          <Property Name="IdTypeChat" Type="int" Nullable="false" />
+          <Property Name="IdTypeClient" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Details">
           <Key>
@@ -41,7 +41,6 @@
           <Property Name="DateOrder" Type="date" Nullable="false" />
           <Property Name="IdStatusOrder" Type="int" Nullable="false" />
           <Property Name="PriceOrder" Type="decimal" Precision="10" Scale="2" Nullable="false" />
-          <Property Name="IdStaff" Type="int" Nullable="false" />
           <Property Name="IdProduct" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Product">
@@ -165,7 +164,7 @@
               <PropertyRef Name="IdTypeClient" />
             </Principal>
             <Dependent Role="Client">
-              <PropertyRef Name="IdTypeChat" />
+              <PropertyRef Name="IdTypeClient" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -190,6 +189,30 @@
             </Principal>
             <Dependent Role="DetailsAndMaterial">
               <PropertyRef Name="IdRawMaterial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="IdClient" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="IdProduct" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -331,6 +354,14 @@
             <End Role="RawMaterial" EntitySet="RawMaterial" />
             <End Role="DetailsAndMaterial" EntitySet="DetailsAndMaterial" />
           </AssociationSet>
+          <AssociationSet Name="FK_Order_Client" Association="Self.FK_Order_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Product" Association="Self.FK_Order_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
           <AssociationSet Name="FK_Order_StatusOrder" Association="Self.FK_Order_StatusOrder">
             <End Role="StatusOrder" EntitySet="StatusOrder" />
             <End Role="Order" EntitySet="Order" />
@@ -382,8 +413,9 @@
           <Property Name="FirstNameClient" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MiddleNameClient" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
           <Property Name="NumberPhoneClient" Type="String" MaxLength="17" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IdTypeChat" Type="Int32" Nullable="false" />
+          <Property Name="IdTypeClient" Type="Int32" Nullable="false" />
           <NavigationProperty Name="TypeClient" Relationship="Self.FK_Client_TypeClient" FromRole="Client" ToRole="TypeClient" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Client" FromRole="Client" ToRole="Order" />
         </EntityType>
         <EntityType Name="Details">
           <Key>
@@ -414,8 +446,9 @@
           <Property Name="DateOrder" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="IdStatusOrder" Type="Int32" Nullable="false" />
           <Property Name="PriceOrder" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-          <Property Name="IdStaff" Type="Int32" Nullable="false" />
           <Property Name="IdProduct" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_Order_Client" FromRole="Order" ToRole="Client" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Order_Product" FromRole="Order" ToRole="Product" />
           <NavigationProperty Name="StatusOrder" Relationship="Self.FK_Order_StatusOrder" FromRole="Order" ToRole="StatusOrder" />
         </EntityType>
         <EntityType Name="Product">
@@ -429,6 +462,7 @@
           <Property Name="GuaranteeProduct" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="QualityProduct" Type="Int32" Nullable="false" />
           <Property Name="IdWorkshop" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Product" FromRole="Product" ToRole="Order" />
           <NavigationProperty Name="Workshop" Relationship="Self.FK_Product_Workshop" FromRole="Product" ToRole="Workshop" />
           <NavigationProperty Name="ProductAndDetails" Relationship="Self.FK_ProductAndDetails_Product" FromRole="Product" ToRole="ProductAndDetails" />
         </EntityType>
@@ -557,7 +591,19 @@
               <PropertyRef Name="IdTypeClient" />
             </Principal>
             <Dependent Role="Client">
-              <PropertyRef Name="IdTypeChat" />
+              <PropertyRef Name="IdTypeClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="IdClient" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="IdClient" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -594,6 +640,18 @@
             </Principal>
             <Dependent Role="ProductAndDetails">
               <PropertyRef Name="IdDetailsAndRawMaterial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="IdProduct" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -715,6 +773,10 @@
             <End Role="TypeClient" EntitySet="TypeClient" />
             <End Role="Client" EntitySet="Client" />
           </AssociationSet>
+          <AssociationSet Name="FK_Order_Client" Association="Self.FK_Order_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
           <AssociationSet Name="FK_DetailsAndMaterial_Details" Association="Self.FK_DetailsAndMaterial_Details">
             <End Role="Details" EntitySet="Details" />
             <End Role="DetailsAndMaterial" EntitySet="DetailsAndMaterial" />
@@ -726,6 +788,10 @@
           <AssociationSet Name="FK_ProductAndDetails_DetailsAndMaterial" Association="Self.FK_ProductAndDetails_DetailsAndMaterial">
             <End Role="DetailsAndMaterial" EntitySet="DetailsAndMaterial" />
             <End Role="ProductAndDetails" EntitySet="ProductAndDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Product" Association="Self.FK_Order_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Order" EntitySet="Order" />
           </AssociationSet>
           <AssociationSet Name="FK_Order_StatusOrder" Association="Self.FK_Order_StatusOrder">
             <End Role="StatusOrder" EntitySet="StatusOrder" />
@@ -774,7 +840,7 @@
                 <ScalarProperty Name="FirstNameClient" ColumnName="FirstNameClient" />
                 <ScalarProperty Name="MiddleNameClient" ColumnName="MiddleNameClient" />
                 <ScalarProperty Name="NumberPhoneClient" ColumnName="NumberPhoneClient" />
-                <ScalarProperty Name="IdTypeChat" ColumnName="IdTypeChat" />
+                <ScalarProperty Name="IdTypeClient" ColumnName="IdTypeClient" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -804,7 +870,6 @@
                 <ScalarProperty Name="DateOrder" ColumnName="DateOrder" />
                 <ScalarProperty Name="IdStatusOrder" ColumnName="IdStatusOrder" />
                 <ScalarProperty Name="PriceOrder" ColumnName="PriceOrder" />
-                <ScalarProperty Name="IdStaff" ColumnName="IdStaff" />
                 <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
               </MappingFragment>
             </EntityTypeMapping>
