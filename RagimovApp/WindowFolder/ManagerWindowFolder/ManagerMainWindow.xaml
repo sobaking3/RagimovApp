@@ -53,6 +53,10 @@
                                 Content="Список заказов"
                                 Height="50" Click="ListOrdersButton_Click"/>
 
+                        <Button x:Name="ListProductsButton"
+                                Content="Список продуктов"
+                                Height="50" Click="ListProductsButton_Click"/>
+
                     </StackPanel>
                     <Button x:Name="ExitBtn"
                             Grid.Row="1"

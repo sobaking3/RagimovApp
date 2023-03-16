@@ -162,6 +162,9 @@
     <Compile Include="PageFolder\ManagerPageFolder\ListOrderPage.xaml.cs">
       <DependentUpon>ListOrderPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PageFolder\ManagerPageFolder\ListProductPage.xaml.cs">
+      <DependentUpon>ListProductPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WindowFolder\AdminWindowFolder\AdminMainWindow.xaml.cs">
       <DependentUpon>AdminMainWindow.xaml</DependentUpon>
     </Compile>
@@ -236,6 +239,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PageFolder\ManagerPageFolder\ListOrderPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageFolder\ManagerPageFolder\ListProductPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

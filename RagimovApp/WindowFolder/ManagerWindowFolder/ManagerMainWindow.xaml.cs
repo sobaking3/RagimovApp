@@ -54,5 +54,10 @@ namespace RagimovApp.WindowFolder.ManagerWindowFolder
         {
             MainFrame.Navigate(new ListOrderPage());
         }
+
+        private void ListProductsButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new ListProductPage());
+        }
     }
 }
