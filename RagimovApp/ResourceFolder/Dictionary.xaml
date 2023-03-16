@@ -36,12 +36,11 @@
         <Setter Property="Margin" Value="10"/>
         <Setter Property="Background" Value="{x:Null}"/>
         <Setter Property="Height" Value="50"/>
-        <!--<Style.Resources>
+        <Style.Resources>
             <Style TargetType="Border">
                 <Setter Property="CornerRadius" Value="10" />
-                --><!--Закругление текстбокса--><!--
             </Style>
-        </Style.Resources>-->
+        </Style.Resources>
     </Style>
    
 
@@ -55,12 +54,17 @@
         <Setter Property="Background" Value="{x:Null}"/>
         <Setter Property="Height" Value="50"/>
         <Setter Property="Margin" Value="10"/>
-        <!--<Style.Resources>
-            <Style TargetType="Border">
-                <Setter Property="CornerRadius" Value="10" />
-                --><!--Закругление пассвордбокса--><!--
-            </Style>
-        </Style.Resources>-->
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type PasswordBox}">
+                    <Border Background="{TemplateBinding Background}"
+                            x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                        <ScrollViewer Name="PART_ContentHost" SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <Style TargetType="Button">

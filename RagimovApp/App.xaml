@@ -7,7 +7,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="C:\Users\Рагимов\source\repos\RagimovApp\RagimovApp\ResourceFolder\Dictionary.xaml"/>
+                <ResourceDictionary Source="ResourceFolder\Dictionary.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
